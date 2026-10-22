@@ -1,0 +1,2070 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+       <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="hbm-portfolio — Freelancer, DevOps Engineer, Graphic Designer. Web apps, mobile, branding, SEO and IT support.">
+    <meta name="author" content="hbm-portfolio">
+    <meta name="keywords" content="hbm-portfolio, freelance developer, DevOps, graphic designer, Nepal">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0A2241" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+
+    <title>hbm</title>
+
+    <!-- FOUC guard — set theme before first paint (synchronous, tiny) -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('hbm-theme');
+          if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+
+    <link rel="icon" href="./static/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./static/images/favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://getbootstrap.com/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+    <link rel="preload" as="image" href="./static/images/banner.png" fetchpriority="high">
+
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+    <!-- CSS — single custome.css (contains fixes appended) then FA7 last so FA7 wins -->
+    <link rel="stylesheet" href="./static/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./static/css/custome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <!--/Header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light stroke py-lg-0">
+                <a class="navbar-brand pe-xl-5 pe-lg-4" href="index.html">
+                    <img src="./static/images/light-logo.png" data-default-logo="./static/images/light-logo.png"
+                        data-scrolled-logo="./static/images/dark-logo.png"
+                        data-dark-scrolled-logo="./static/images/light-logo.png"
+                        data-light-scrolled-logo="./static/images/light-logo.png" alt="Logo">
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon icon-expand bi bi-list"></span>
+                    <span class="navbar-toggler-icon icon-close bi bi-x"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav me-lg-auto my-2 my-lg-0 navbar-nav-scroll">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#services">Domain</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#clients">Clients</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#price">Pricing</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    </ul>
+                    <ul class="navbar-nav search-right mt-lg-0 mt-2 justify-content-center align-items-center">
+                        <li class="nav-item mr-2" title="Search"><a href="#search" class="search-search">
+                                <span class="bi bi-search" aria-hidden="true"></span></a></li>
+                        <li class="nav-item me-lg-4"><a href=""
+                                class="phone-btn btn-white btn-sm d-none d-lg-block p-2 rounded d-flex ms-1"><span
+                                    class="bi bi-person me-1" aria-hidden="true"></span>Let's Work</a></li>
+                    </ul>
+                    <div id="search" class="w3lpop-overlay">
+                        <div class="w3lpopup">
+                            <form action="#formsearch" method="GET" class="d-flex">
+                                <input type="search" placeholder="Search.." name="search" required="required" autofocus>
+                                <button type="submit"><span class="bi bi-search"></span></button>
+                                <a class="close" href="#formsearch">&times;</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-position py-md-2 py-2">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <section class="banner" id="home" aria-labelledby="banner-title">
+        <div class="container py-5">
+            <div class="row align-items-center g-4 g-lg-5">
+                <div class="col-12 col-lg-8 col-xl-7">
+                    <p class="banner__eyebrow mb-2 mb-md-3">Hello — I'm</p>
+                    <h1 class="banner__title mb-4 mb-md-5" id="banner-title">
+                        <span class="typed-text"
+                            data-words='["Freelancer","DevOps Engineer","Graphic Designer"]'></span><span class="cursor"
+                            aria-hidden="true"></span>
+                    </h1>
+                    <div class="main-slider-banner mb-4 mb-md-5">
+                        <div class="swiper main-slider-banner__swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="main-slider-banner__row"><span class="main-slider-banner__mark"
+                                            aria-hidden="true">&ldquo;</span>
+                                        <p class="main-slider-banner__text">Just text content. No extra decoration,
+                                            shadows, or gradients. Keep it simple.</p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="main-slider-banner__row"><span class="main-slider-banner__mark"
+                                            aria-hidden="true">&ldquo;</span>
+                                        <p class="main-slider-banner__text">Second slide with plain text. Swiper handles
+                                            the sliding, pagination is bare minimum.</p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="main-slider-banner__row"><span class="main-slider-banner__mark"
+                                            aria-hidden="true">&ldquo;</span>
+                                        <p class="main-slider-banner__text">Third slide. Content is easy to replace. No
+                                            fancy borders, no colored accents, just readable text.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination main-slider-banner__pagination"></div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2 gap-sm-3">
+                        <a href="about.html" class="btn btn-banner">Donate Now <i class="bi bi-bag-heart ms-2"
+                                aria-hidden="true"></i></a>
+                        <a href="about.html" class="btn btn-banner">Let's Engage <i
+                                class="fas fa-angle-double-right ms-2" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-xl-5 d-none d-lg-block">
+                    <div class="banner__portrait">
+                        <img src="../static/images/banner.png" class="img-fluid" loading="lazy" decoding="async">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialization -->
+    <section id="services" class="specialization py-5">
+        <div class="sp-deco" aria-hidden="true">
+            <div class="sp-aurora"></div>
+            <div class="sp-grid"></div>
+            <div class="sp-beam"></div>
+            <span class="sp-meteor sp-meteor-1"></span>
+            <span class="sp-meteor sp-meteor-2"></span>
+            <span class="sp-meteor sp-meteor-3"></span>
+            <span class="sp-meteor sp-meteor-4"></span>
+            <span class="sp-shape sp-shape-1"></span>
+            <span class="sp-shape sp-shape-2"></span>
+            <span class="sp-shape sp-shape-tri sp-shape-3"></span>
+            <span class="sp-shape sp-shape-4"></span>
+            <span class="sp-halo sp-halo-1"></span>
+            <span class="sp-halo sp-halo-2"></span>
+            <span class="sp-sparkle sp-sparkle-1"></span>
+            <span class="sp-sparkle sp-sparkle-2"></span>
+            <span class="sp-sparkle sp-sparkle-3"></span>
+            <span class="sp-sparkle sp-sparkle-4"></span>
+            <div class="sp-ripples"></div>
+        </div>
+        <div class="container sp-inner py-md-5 py-3">
+            <div class="row justify-content-center text-center mb-2">
+                <div class="col-lg-8">
+                    <p class="sp-eyebrow">What can I do for you?</p>
+                    <h2 class="sp-title">Specialization in Domains</h2>
+                    <p class="sp-lead">Six focused areas where I help teams plan sharper, ship faster and grow steadier.
+                    </p>
+                </div>
+            </div>
+            <div class="row g-4 pt-md-3">
+                <div class="col-lg-4 col-md-6">
+                    <article class="sp-card" style="--i:0"><span class="sp-num" aria-hidden="true">01</span><a
+                            class="sp-link" href="#feature">
+                            <div class="sp-head-row"><span class="sp-icon" aria-hidden="true"><i
+                                        class="bi bi-justify-left"></i></span>
+                                <h3 class="sp-card-title">Business Strategy</h3>
+                            </div>
+                            <p class="sp-card-text">Clear positioning, roadmaps and pricing that turn a rough idea into
+                                a plan your team can actually execute.</p><span class="sp-more">Learn more <i
+                                    class="bi bi-arrow-right" aria-hidden="true"></i></span>
+                        </a></article>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <article class="sp-card" style="--i:1"><span class="sp-num" aria-hidden="true">02</span><a
+                            class="sp-link" href="#feature">
+                            <div class="sp-head-row"><span class="sp-icon" aria-hidden="true"><i
+                                        class="bi bi-app-indicator"></i></span>
+                                <h3 class="sp-card-title">Web App</h3>
+                            </div>
+                            <p class="sp-card-text">Fast, accessible web applications built with modern frameworks and
+                                clean, maintainable code.</p><span class="sp-more">Learn more <i
+                                    class="bi bi-arrow-right" aria-hidden="true"></i></span>
+                        </a></article>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <article class="sp-card" style="--i:2"><span class="sp-num" aria-hidden="true">03</span><a
+                            class="sp-link" href="#feature">
+                            <div class="sp-head-row"><span class="sp-icon" aria-hidden="true"><i
+                                        class="bi bi-phone"></i></span>
+                                <h3 class="sp-card-title">Mobile App</h3>
+                            </div>
+                            <p class="sp-card-text">Cross-platform mobile experiences for iOS and Android that feel
+                                native and load instantly.</p><span class="sp-more">Learn more <i
+                                    class="bi bi-arrow-right" aria-hidden="true"></i></span>
+                        </a></article>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <article class="sp-card" style="--i:3"><span class="sp-num" aria-hidden="true">04</span><a
+                            class="sp-link" href="#feature">
+                            <div class="sp-head-row"><span class="sp-icon" aria-hidden="true"><i
+                                        class="bi bi-bezier"></i></span>
+                                <h3 class="sp-card-title">Graphic Design</h3>
+                            </div>
+                            <p class="sp-card-text">Striking brand systems, interfaces and marketing assets that stay
+                                consistent across every channel.</p><span class="sp-more">Learn more <i
+                                    class="bi bi-arrow-right" aria-hidden="true"></i></span>
+                        </a></article>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <article class="sp-card" style="--i:4"><span class="sp-num" aria-hidden="true">05</span><a
+                            class="sp-link" href="#feature">
+                            <div class="sp-head-row"><span class="sp-icon" aria-hidden="true"><i
+                                        class="bi bi-graph-up-arrow"></i></span>
+                                <h3 class="sp-card-title">SEO Marketing</h3>
+                            </div>
+                            <p class="sp-card-text">Data-led search and content strategy that grows qualified traffic
+                                month after month — not just clicks.</p><span class="sp-more">Learn more <i
+                                    class="bi bi-arrow-right" aria-hidden="true"></i></span>
+                        </a></article>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <article class="sp-card" style="--i:5"><span class="sp-num" aria-hidden="true">06</span><a
+                            class="sp-link" href="#feature">
+                            <div class="sp-head-row"><span class="sp-icon" aria-hidden="true"><i
+                                        class="bi bi-headset"></i></span>
+                                <h3 class="sp-card-title">IT Support</h3>
+                            </div>
+                            <p class="sp-card-text">Reliable monitoring, troubleshooting and hands-on assistance that
+                                keeps your systems running.</p><span class="sp-more">Learn more <i
+                                    class="bi bi-arrow-right" aria-hidden="true"></i></span>
+                        </a></article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- profile -->
+    <section class="npf-portfolio" aria-labelledby="npf-title" id="portfolio">
+        <div class="container">
+
+            <!-- ================= HEADER ================= -->
+            <div class="npf-head">
+                <div class="row align-items-end gx-4 gx-lg-5 gy-4">
+                    <div class="col-lg-7">
+                        <p class="npf-eyebrow"><span class="npf-eyebrow-dot"></span>Portfolio</p>
+                        <h2 class="npf-title" id="npf-title">Selected work<em>.</em></h2>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="npf-side">
+                            <p>
+                                A small set of recent engagements across product design, brand
+                                and interface engineering — built for teams that care about
+                                the details.
+                            </p>
+                            <a class="npf-link" href="#">
+                                View all projects
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M7 7h10v10" />
+                                    <path d="M7 17 17 7" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= CARD GRID ================= -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gx-3 gx-lg-4 gy-4 gy-lg-5 npf-grid">
+
+                <div class="col">
+                    <a class="npf-card" href="#">
+                        <div class="npf-media">
+                            <div class="npf-cover">
+                                <img class="npf-img"
+                                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+                                    alt="Analytics dashboard on a laptop screen" />
+                                <span class="npf-badge">2024</span>
+                            </div>
+                            <div class="npf-notch" aria-hidden="true"></div>
+                            <div class="npf-fillet npf-fillet--top" aria-hidden="true"></div>
+                            <div class="npf-fillet npf-fillet--side" aria-hidden="true"></div>
+                            <span class="npf-disc" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M7 7h10v10" />
+                                    <path d="M7 17 17 7" />
+                                </svg>
+                            </span>
+                        </div>
+                        <h3 class="npf-card-title">Aurora Analytics</h3>
+                        <p class="npf-desc">A real-time analytics workspace for product teams — rebuilt around live
+                            data, zero page reloads and a keyboard-first UI.</p>
+                        <ul class="npf-tags">
+                            <li class="npf-tag">Product design</li>
+                            <li class="npf-tag">Next.js</li>
+                        </ul>
+                    </a>
+                </div>
+
+                <div class="col">
+                    <a class="npf-card" href="#">
+                        <div class="npf-media">
+                            <div class="npf-cover">
+                                <img class="npf-img"
+                                    src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80"
+                                    alt="Abstract three-dimensional gradient form" />
+                                <span class="npf-badge">2023</span>
+                            </div>
+                            <div class="npf-notch" aria-hidden="true"></div>
+                            <div class="npf-fillet npf-fillet--top" aria-hidden="true"></div>
+                            <div class="npf-fillet npf-fillet--side" aria-hidden="true"></div>
+                            <span class="npf-disc" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M7 7h10v10" />
+                                    <path d="M7 17 17 7" />
+                                </svg>
+                            </span>
+                        </div>
+                        <h3 class="npf-card-title">Northwind Studio</h3>
+                        <p class="npf-desc">Identity and website for an independent architecture practice working in
+                            concrete, glass and light.</p>
+                        <ul class="npf-tags">
+                            <li class="npf-tag">Brand</li>
+                            <li class="npf-tag">Art direction</li>
+                        </ul>
+                    </a>
+                </div>
+
+                <div class="col">
+                    <a class="npf-card" href="#">
+                        <div class="npf-media">
+                            <div class="npf-cover">
+                                <img class="npf-img"
+                                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
+                                    alt="Code on a laptop screen in a dim room" />
+                                <span class="npf-badge">2024</span>
+                            </div>
+                            <div class="npf-notch" aria-hidden="true"></div>
+                            <div class="npf-fillet npf-fillet--top" aria-hidden="true"></div>
+                            <div class="npf-fillet npf-fillet--side" aria-hidden="true"></div>
+                            <span class="npf-disc" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M7 7h10v10" />
+                                    <path d="M7 17 17 7" />
+                                </svg>
+                            </span>
+                        </div>
+                        <h3 class="npf-card-title">Fieldnote</h3>
+                        <p class="npf-desc">A calm note-taking app for researchers working offline in the field, with a
+                            full cross-platform design system.</p>
+                        <ul class="npf-tags">
+                            <li class="npf-tag">iOS</li>
+                            <li class="npf-tag">Design system</li>
+                        </ul>
+                    </a>
+                </div>
+
+                <div class="col">
+                    <a class="npf-card" href="#">
+                        <div class="npf-media">
+                            <div class="npf-cover">
+                                <img class="npf-img"
+                                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+                                    alt="Laptop showing a marketing dashboard with charts" />
+                                <span class="npf-badge">2023</span>
+                            </div>
+                            <div class="npf-notch" aria-hidden="true"></div>
+                            <div class="npf-fillet npf-fillet--top" aria-hidden="true"></div>
+                            <div class="npf-fillet npf-fillet--side" aria-hidden="true"></div>
+                            <span class="npf-disc" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M7 7h10v10" />
+                                    <path d="M7 17 17 7" />
+                                </svg>
+                            </span>
+                        </div>
+                        <h3 class="npf-card-title">Meridian</h3>
+                        <p class="npf-desc">Checkout and payment flows for a cross-border commerce platform operating in
+                            eleven markets.</p>
+                        <ul class="npf-tags">
+                            <li class="npf-tag">Fintech</li>
+                            <li class="npf-tag">UX</li>
+                        </ul>
+                    </a>
+                </div>
+
+                <div class="col">
+                    <a class="npf-card" href="#">
+                        <div class="npf-media">
+                            <div class="npf-cover">
+                                <img class="npf-img"
+                                    src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80"
+                                    alt="Calm hotel room with warm natural light" />
+                                <span class="npf-badge">2022</span>
+                            </div>
+                            <div class="npf-notch" aria-hidden="true"></div>
+                            <div class="npf-fillet npf-fillet--top" aria-hidden="true"></div>
+                            <div class="npf-fillet npf-fillet--side" aria-hidden="true"></div>
+                            <span class="npf-disc" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M7 7h10v10" />
+                                    <path d="M7 17 17 7" />
+                                </svg>
+                            </span>
+                        </div>
+                        <h3 class="npf-card-title">Halcyon Hotels</h3>
+                        <p class="npf-desc">A booking experience and content platform for a small group of coastal
+                            hotels.</p>
+                        <ul class="npf-tags">
+                            <li class="npf-tag">Web</li>
+                            <li class="npf-tag">CMS</li>
+                        </ul>
+                    </a>
+                </div>
+
+                <div class="col">
+                    <a class="npf-card" href="#">
+                        <div class="npf-media">
+                            <div class="npf-cover">
+                                <img class="npf-img"
+                                    src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=1200&q=80"
+                                    alt="Hand-thrown ceramic vessels on a studio table" />
+                                <span class="npf-badge">2022</span>
+                            </div>
+                            <div class="npf-notch" aria-hidden="true"></div>
+                            <div class="npf-fillet npf-fillet--top" aria-hidden="true"></div>
+                            <div class="npf-fillet npf-fillet--side" aria-hidden="true"></div>
+                            <span class="npf-disc" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M7 7h10v10" />
+                                    <path d="M7 17 17 7" />
+                                </svg>
+                            </span>
+                        </div>
+                        <h3 class="npf-card-title">Kiln Ceramics</h3>
+                        <p class="npf-desc">E-commerce and packaging for a studio ceramics label, from identity through
+                            to unboxing.</p>
+                        <ul class="npf-tags">
+                            <li class="npf-tag">E-commerce</li>
+                            <li class="npf-tag">Packaging</li>
+                        </ul>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- end-profile -->
+
+    <!-- Course -->
+    <section class="course-wrapper" id="blog">
+        <div class="container">
+            <div class="row py-lg-5 py-2">
+                <div class="bottom-ab-grids align-items-center py-lg-4 py-md-2">
+                    <div class="course-header">
+                        <h6 class="sub-title">How may I assist you?</h6>
+                        <h3 class="main-title">Learn Emerging IT</h3>
+                        <div class="title-divider"></div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="course-swiper-wrapper">
+                        <div class="swiper-button-prev"></div>
+                        <div class="course-swiper swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="course-card"><a href="#"
+                                            class="course-date-sticker d-flex align-items-start"
+                                            style="background-image:url('../static/images/banner1.jpg');">
+                                            <div class="course-date text-center"><span class="day">26</span><span
+                                                    class="mos">Nov.</span><span class="yr">2019</span></div>
+                                        </a>
+                                        <div class="course-body p-4">
+                                            <h3 class="heading"><a href="#" class="tl1">Advance Python Programming
+                                                    Language</a></h3>
+                                            <p class="tl3">Python is a programming language that lets you work quickly
+                                                and integrate systems more effectively.</p>
+                                            <div class="d-flex align-items-center mt-4">
+                                                <p class="mb-0"><a href="#" class="btn-view">View Now<span
+                                                            class="bi bi-arrow-right-short"></span></a></p>
+                                                <div class="course-card-buttom ms-auto"><a href="#"
+                                                        class="admin-link">Admin</a><span class="separator">|</span><a
+                                                        href="#" class="meta-chat"><span
+                                                            class="bi bi-chat-right-fill"></span> 3</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="course-card"><a href="#"
+                                            class="course-date-sticker d-flex align-items-start"
+                                            style="background-image:url('../static/images/banner2.jpg');">
+                                            <div class="course-date text-center"><span class="day">21</span><span
+                                                    class="mos">Sep.</span><span class="yr">2025</span></div>
+                                        </a>
+                                        <div class="course-body p-4">
+                                            <h3 class="heading"><a class="tl1" href="#">Django REST Framework for Web
+                                                    APIs with Django</a></h3>
+                                            <p class="tl3">DRF extends Django's capabilities to simplify the creation of
+                                                RESTful APIs, used to join among different software systems.</p>
+                                            <div class="d-flex align-items-center mt-4">
+                                                <p class="mb-0"><a href="#" class="btn-view">View Now<span
+                                                            class="bi bi-arrow-right-short"></span></a></p>
+                                                <div class="course-card-buttom ms-auto"><a href="#"
+                                                        class="admin-link">Admin</a><span class="separator">|</span><a
+                                                        href="#" class="meta-chat"><span
+                                                            class="bi bi-chat-right-fill"></span> 3</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="course-card"><a href="#"
+                                            class="course-date-sticker d-flex align-items-start"
+                                            style="background-image:url('../static/images/banner3.jpg');">
+                                            <div class="course-date text-center"><span class="day">07</span><span
+                                                    class="mos">Dec.</span><span class="yr">2025</span></div>
+                                        </a>
+                                        <div class="course-body p-4">
+                                            <h3 class="heading"><a href="#" class="tl1">React is a JavaScript library
+                                                    package</a></h3>
+                                            <p class="tl3">lets you build components like Thumbnail, LikeButton, and
+                                                Video. Then combine them into entire screens, pages, apps.</p>
+                                            <div class="d-flex align-items-center mt-4">
+                                                <p class="mb-0"><a href="#" class="btn-view">View Now<span
+                                                            class="bi bi-arrow-right-short"></span></a></p>
+                                                <div class="course-card-buttom ms-auto"><a href="#"
+                                                        class="admin-link">Admin</a><span class="separator">|</span><a
+                                                        href="#" class="meta-chat"><span
+                                                            class="bi bi-chat-right-fill"></span> 3</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="course-card"><a href="#"
+                                            class="course-date-sticker d-flex align-items-start"
+                                            style="background-image:url('../static/images/banner4.jpg');">
+                                            <div class="course-date text-center"><span class="day">26</span><span
+                                                    class="mos">Nov.</span><span class="yr">2025</span></div>
+                                        </a>
+                                        <div class="course-body p-4">
+                                            <h3 class="heading"><a class="tl1" href="#">JavaScript Programming
+                                                    Language</a></h3>
+                                            <p class="tl3">JS is a high-level, interpreted programming language and a
+                                                core technology of the World Wide Web.</p>
+                                            <div class="d-flex align-items-center mt-4">
+                                                <p class="mb-0"><a href="#" class="btn-view">View Now<span
+                                                            class="bi bi-arrow-right-short"></span></a></p>
+                                                <div class="course-card-buttom ms-auto"><a href="#"
+                                                        class="admin-link">Admin</a><span class="separator">|</span><a
+                                                        href="#" class="meta-chat"><span
+                                                            class="bi bi-chat-right-fill"></span> 3</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="course-card"><a href="#"
+                                            class="course-date-sticker d-flex align-items-start"
+                                            style="background-image:url('../static/images/banner5.jpg');">
+                                            <div class="course-date text-center"><span class="day">26</span><span
+                                                    class="mos">Nov.</span><span class="yr">2025</span></div>
+                                        </a>
+                                        <div class="course-body p-4">
+                                            <h3 class="heading"><a href="#" class="tl1">Bootstrap is a frontend toolkit
+                                                    for any prototype</a></h3>
+                                            <p class="tl3">Lets try to Build fast, responsive web sites with Bootstrap.
+                                                It is Powerful, extensible, and feature-packed frontend toolkit.</p>
+                                            <div class="d-flex align-items-center mt-4">
+                                                <p class="mb-0"><a href="#" class="btn-view">View Now<span
+                                                            class="bi bi-arrow-right-short"></span></a></p>
+                                                <div class="course-card-buttom ms-auto"><a href="#"
+                                                        class="admin-link">Admin</a><span class="separator">|</span><a
+                                                        href="#" class="meta-chat"><span
+                                                            class="bi bi-chat-right-fill"></span> 3</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="course-card"><a href="#"
+                                            class="course-date-sticker d-flex align-items-start"
+                                            style="background-image:url('../static/images/g1.jpg');">
+                                            <div class="course-date text-center"><span class="day">26</span><span
+                                                    class="mos">Nov.</span><span class="yr">2025</span></div>
+                                        </a>
+                                        <div class="course-body p-4">
+                                            <h3 class="heading"><a href="#" class="tl1">Evergreen Cascading Style
+                                                    Sheets</a></h3>
+                                            <p class="tl3">CSS is a core language of the open web platform, and is used
+                                                for adding style to Web documents.</p>
+                                            <div class="d-flex align-items-center mt-4">
+                                                <p class="mb-0"><a href="#" class="btn-view">View Now<span
+                                                            class="bi bi-arrow-right-short"></span></a></p>
+                                                <div class="course-card-buttom ms-auto"><a href="#"
+                                                        class="admin-link">Admin</a><span class="separator">|</span><a
+                                                        href="#" class="meta-chat"><span
+                                                            class="bi bi-chat-right-fill"></span> 3</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="course-pagination py-2"></div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume -->
+    <section class="resume-area" id="resume">
+        <div class="resume-stage" aria-hidden="true">
+            <div class="resume-orb resume-orb--a"></div>
+            <div class="resume-orb resume-orb--b"></div>
+            <div class="resume-orb resume-orb--c"></div>
+            <canvas class="resume-bloom"></canvas>
+            <canvas class="resume-main"></canvas>
+            <div class="resume-grid"></div>
+            <div class="resume-vignette"></div>
+            <div class="resume-grain"></div>
+        </div>
+        <div class="container py-md-5 py-lg-5 py-3">
+            <div class="row bottom-ab-grids align-items-center py-lg-5 py-md-2">
+                <div class="header-sec header-text text-center">
+                    <div class="title-subhny mb-2"><i class="bi bi-stars"></i>10+ years experience</div>
+                    <h1 class="sub-header mb-3">My Resume</h1>
+                    <p class="tagline">Architecting scalable systems · leading with empathy · delivering impact</p>
+                </div>
+            </div>
+            <div class="tabs-nav shadow mb-4" id="tabNav">
+                <button class="tab-btn active" data-tab="skills"><i class="bi bi-sliders"></i>Professional
+                    Skills</button>
+                <button class="tab-btn" data-tab="experience"><i class="bi bi-briefcase-fill"></i> Experience</button>
+                <button class="tab-btn" data-tab="status"><i class="bi bi-graph-up"></i>Progress</button>
+                <button class="tab-btn" data-tab="academic"><i class="bi bi-mortarboard-fill"></i>Academic</button>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="skillsPane">
+                    <div class="skills-grid">
+                        <div class="skill-card shadow">
+                            <div class="skill-title"><i class="bi bi-code-square"></i> Core Stack</div>
+                            <div class="progress-item">
+                                <div class="progress-label"><i class="bi bi-braces"></i><span class="skill-name">React /
+                                        Next.js</span><span class="skill-percent">97%</span></div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" data-skill="97"></div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-label"><i class="bi bi-typescript"></i><span
+                                        class="skill-name">TypeScript</span><span class="skill-percent">96%</span></div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" data-skill="96"></div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-label"><i class="bi bi-node-plus"></i><span
+                                        class="skill-name">Django / REST framework</span><span
+                                        class="skill-percent">91%</span></div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" data-skill="91"></div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-label"><i class="bi bi-filetype-py"></i><span
+                                        class="skill-name">Python - Pandas, NumPy</span><span
+                                        class="skill-percent">88%</span></div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" data-skill="88"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card shadow">
+                            <div class="skill-title"><i class="bi bi-cloud-check"></i> Cloud & Infra</div>
+                            <div class="progress-item">
+                                <div class="progress-label"><i class="bi bi-cloud-fill"></i><span class="skill-name">AWS
+                                        (EKS, Lambda)</span><span class="skill-percent">86%</span></div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" data-skill="86"></div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-label"><i class="bi bi-box"></i><span class="skill-name">Docker /
+                                        Kubernetes</span><span class="skill-percent">84%</span></div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" data-skill="84"></div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-label"><i class="bi bi-infinity"></i><span
+                                        class="skill-name">Terraform / CDK</span><span class="skill-percent">80%</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" data-skill="80"></div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-label"><i class="bi bi-github"></i><span class="skill-name">CI/CD
+                                        (GitHub Actions)</span><span class="skill-percent">93%</span></div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" data-skill="93"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card shadow mt-4">
+                        <div class="skill-title"><i class="bi bi-tools"></i> Toolbox</div>
+                        <div class="tool-pills">
+                            <span class="pill"><i class="bi bi-hdd-rack"></i>VPS Hosting</span>
+                            <span class="pill"><i class="bi bi-git"></i> Git/GitHub</span>
+                            <span class="pill"><i class="bi bi-file-bar-graph-fill"></i>GraphQL</span>
+                            <span class="pill"><i class="bi bi-code-slash"></i>REST APIs</span>
+                            <span class="pill"><i class="bi bi-database"></i>PostgreSQL</span>
+                            <span class="pill"><i class="bi bi-database"></i>MySQL</span>
+                            <span class="pill"><i class="bi bi-circle"></i>Redis</span>
+                            <span class="pill"><i class="bi bi-diagram-3"></i>System Design</span>
+                            <span class="pill"><i class="bi bi-journal-code"></i>Jest</span>
+                            <span class="pill"><i class="bi bi-pencil-square"></i>Figma</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="experiencePane">
+                    <div class="position-relative flow-wrapper" id="careerFlowWrapper">
+                        <div class="row g-3 g-md-4 row-ltr mb-4">
+                            <div class="col-12 col-md-6">
+                                <div class="card h-100 border-0 rounded-4 shadow exp-card position-relative">
+                                    <span
+                                        class="position-absolute top-0 end-0 mt-2 mt-md-3 me-2 me-md-3 bg-opacity-10 fw-bold px-2 py-1 card-badge-number">01</span>
+                                    <div class="card-body p-3 p-md-4">
+                                        <div class="d-flex flex-row flex-sm-nowrap gap-3">
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="exp-icon-large rounded-3 d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-globe2"></i>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h4 class="card-title fw-bold mb-1 fs-5 fs-md-4">WEB APP Developer</h4>
+                                                <div class="d-flex flex-wrap gap-2 mt-1 mb-2">
+                                                    <span class="badge px-3 py-1 bg-title rounded-pill fw-semibold"><i
+                                                            class="bi bi-building me-1"></i>Freelancer· Remote</span>
+                                                    <span
+                                                        class="badge bg-duration px-3 py-1 rounded-pill fw-semibold"><i
+                                                            class="bi bi-calendar3 me-1"></i>2024 – Present</span>
+                                                </div>
+                                                <p class="card-text text-secondary small lh-base mb-3">Working remotely
+                                                    as a Web App Developer, I gather client requirements through digital
+                                                    collaboration and translate them into best user-centric applications
+                                                    using CSS, Bootstrap, React.js, Python, Django REST Framework,
+                                                    PostgreSQL database and other modern frameworks.</p>
+                                                <div class="d-flex flex-wrap gap-2 mb-3"><span
+                                                        class="tech-tag badge rounded-pill fw-semibold">React
+                                                        18</span><span
+                                                        class="tech-tag badge rounded-pill fw-semibold">Django</span><span
+                                                        class="tech-tag badge rounded-pill fw-semibold">AWS
+                                                        EKS</span><span
+                                                        class="tech-tag badge rounded-pill fw-semibold">K8s</span><span
+                                                        class="tech-tag badge rounded-pill fw-semibold">Terraform</span>
+                                                </div>
+                                                <span
+                                                    class="badge bg-duration border px-3 py-1 rounded-pill fw-semibold d-inline-flex align-items-center gap-1"><i
+                                                        class="bi bi-star-fill text-warning small"></i>Developer .
+                                                    Part-Time</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="card h-100 border-0 rounded-4 shadow exp-card position-relative">
+                                    <span
+                                        class="position-absolute top-0 end-0 mt-2 mt-md-3 me-2 me-md-3 bg-opacity-10 fw-bold px-2 py-1 card-badge-number">02</span>
+                                    <div class="card-body p-3 p-md-4">
+                                        <div class="d-flex flex-row flex-sm-nowrap gap-3">
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="exp-icon-large rounded-3 d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-router"></i>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h4 class="card-title fw-bold mb-1 fs-5 fs-md-4">NETWORK ENGINNERING
+                                                </h4>
+                                                <div class="d-flex flex-wrap gap-2 mt-1 mb-2">
+                                                    <span class="badge bg-title px-3 py-1 rounded-pill fw-semibold"><i
+                                                            class="bi bi-globe2 me-1"></i>AMC · Nepal</span>
+                                                    <span
+                                                        class="badge bg-duration px-3 py-1 rounded-pill fw-semibold"><i
+                                                            class="bi bi-calendar-week me-1"></i>2022 – Present</span>
+                                                </div>
+                                                <p class="card-text text-secondary small lh-base mb-3">In my working
+                                                    role as a Network Engineer and IT Specialist, I engineer and
+                                                    maintain a scalable network infrastructure by configuring the
+                                                    manageable switches, routers and firewalls.</p>
+                                                <div class="d-flex flex-wrap gap-2 mb-3"><span
+                                                        class="tech-tag badge rounded-pill fw-semibold">IT
+                                                        Technician</span><span
+                                                        class="tech-tag badge rounded-pill fw-semibold">Switches</span><span
+                                                        class="tech-tag badge rounded-pill fw-semibold">Routers</span><span
+                                                        class="tech-tag badge rounded-pill fw-semibold">Firewalls</span>
+                                                </div>
+                                                <span
+                                                    class="badge bg-duration border px-3 py-1 rounded-pill fw-semibold d-inline-flex align-items-center gap-1"><i
+                                                        class="bi bi-trophy small"></i>IT Specialist · Full-time</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-3 g-md-4 rtl-row">
+                            <div class="col-12 col-md-6">
+                                <div class="card h-100 border-0 rounded-4 shadow exp-card position-relative">
+                                    <span
+                                        class="position-absolute top-0 end-0 mt-2 mt-md-3 me-2 me-md-3 bg-opacity-10 fw-bold px-2 py-1 card-badge-number">03</span>
+                                    <div class="card-body p-3 p-md-4">
+                                        <div class="d-flex flex-row flex-sm-nowrap gap-3">
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="exp-icon-large rounded-3 d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-bezier"></i>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h4 class="card-title fw-bold mb-1 fs-5 fs-md-4">GRAPHIC & DIGITAL
+                                                    MARKETING</h4>
+                                                <div class="d-flex flex-wrap gap-2 mt-1 mb-2">
+                                                    <span class="badge bg-title px-3 py-1 rounded-pill fw-semibold"><i
+                                                            class="bi bi-brush me-1"></i>AMC · Nepal</span>
+                                                    <span
+                                                        class="badge bg-duration px-3 py-1 rounded-pill fw-semibold"><i
+                                                            class="bi bi-calendar-range me-1"></i>2021 – 2021</span>
+                                                </div>
+                                                <p class="card-text text-secondary small lh-base mb-3">Worked as a
+                                                    creative professional with dual expertise in graphic design and
+                                                    digital marketing, I develop integrated strategies where compelling
+                                                    brand visuals and data-driven campaigns work in concert.</p>
+                                                <div class="d-flex flex-wrap gap-2 mb-3"><span
+                                                        class="tech-tag badge rounded-pill fw-semibold">Adobe
+                                                        Photoshop</span><span
+                                                        class="tech-tag badge rounded-pill fw-semibold">Adobe
+                                                        Illustrator</span><span
+                                                        class="tech-tag badge rounded-pill fw-semibold">Adobe Premiere
+                                                        Pro</span><span
+                                                        class="tech-tag badge rounded-pill fw-semibold">Typography</span><span
+                                                        class="tech-tag badge rounded-pill fw-semibold">Figma</span>
+                                                </div>
+                                                <span
+                                                    class="badge bg-duration border px-3 py-1 rounded-pill fw-semibold d-inline-flex align-items-center gap-1"><i
+                                                        class="bi bi-briefcase small"></i>Designer . Part-Time</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="card h-100 border-0 rounded-4 shadow exp-card position-relative">
+                                    <span
+                                        class="position-absolute top-0 end-0 mt-2 mt-md-3 me-2 me-md-3 bg-opacity-10 fw-bold px-2 py-1 card-badge-number">04</span>
+                                    <div class="card-body p-3 p-md-4">
+                                        <div class="d-flex flex-row flex-sm-nowrap gap-3">
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="exp-icon-large rounded-3 d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-hdd-rack"></i>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h4 class="card-title fw-bold mb-1 fs-5 fs-md-4">EMERGING IT TRAINER
+                                                </h4>
+                                                <div class="d-flex flex-wrap gap-2 mt-1 mb-2">
+                                                    <span class="badge bg-title px-3 py-1 rounded-pill fw-semibold"><i
+                                                            class="bi bi-code-square me-1"></i>EEI Pvt.Ltd · Dang</span>
+                                                    <span
+                                                        class="badge bg-duration px-3 py-1 rounded-pill fw-semibold"><i
+                                                            class="bi bi-calendar-heart me-1"></i>2017 – 2019</span>
+                                                </div>
+                                                <p class="card-text text-secondary small lh-base mb-3">Worked as an IT
+                                                    Technician, providing hands-on technical assistance to end-users,
+                                                    troubleshooting hardware and software issues, and maintaining system
+                                                    performance and security.</p>
+                                                <div class="d-flex flex-wrap gap-2 mb-3"><span
+                                                        class="tech-tag badge rounded-pill fw-semibold">Git/GitHub
+                                                        Actions</span><span
+                                                        class="tech-tag badge rounded-pill fw-semibold">Jira</span><span
+                                                        class="tech-tag badge rounded-pill fw-semibold">React</span><span
+                                                        class="tech-tag badge rounded-pill fw-semibold">Docker</span><span
+                                                        class="tech-tag badge rounded-pill fw-semibold">Postman</span>
+                                                </div>
+                                                <span
+                                                    class="badge bg-duration border px-3 py-1 rounded-pill fw-semibold d-inline-flex align-items-center gap-1"><i
+                                                        class="bi bi-mortarboard small"></i>Technical Lead ·
+                                                    Full-Time</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="flowSvgContainer" class="flow-svg-layer"></div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="statusPane">
+                    <div class="stats-row">
+                        <div class="stat-card shadow"><i class="bi bi-briefcase-fill stat-icon"></i>
+                            <div class="stat-number" id="statProjects" data-target="178">0</div>
+                            <div class="stat-label-sm">Projects done</div>
+                        </div>
+                        <div class="stat-card shadow"><i class="bi bi-calendar-check stat-icon"></i>
+                            <div class="stat-number" id="statYears" data-target="10">0</div>
+                            <div class="stat-label-sm">Years exp.</div>
+                        </div>
+                        <div class="stat-card shadow"><i class="bi bi-emoji-smile stat-icon"></i>
+                            <div class="stat-number" id="statClients" data-target="134">0</div>
+                            <div class="stat-label-sm">Happy clients</div>
+                        </div>
+                        <div class="stat-card shadow"><i class="bi bi-code-slash stat-icon"></i>
+                            <div class="stat-number" id="statCommits" data-target="3150">0</div>
+                            <div class="stat-label-sm">Commits (2024)</div>
+                        </div>
+                    </div>
+                    <div class="pref-grid">
+                        <div class="pref-box shadow">
+                            <div class="pref-icon"><i class="bi bi-brightness-high"></i></div>
+                            <div class="pref-text"><strong>Availability</strong><span>Immediate / Open</span></div>
+                        </div>
+                        <div class="pref-box shadow">
+                            <div class="pref-icon"><i class="bi bi-calendar-week"></i></div>
+                            <div class="pref-text"><strong>Notice period</strong><span>2 weeks flexible</span></div>
+                        </div>
+                        <div class="pref-box shadow">
+                            <div class="pref-icon"><i class="bi bi-laptop"></i></div>
+                            <div class="pref-text"><strong>Work type</strong><span>Remote / Hybrid (PST)</span></div>
+                        </div>
+                        <div class="pref-box shadow">
+                            <div class="pref-icon"><i class="bi bi-cash-stack"></i></div>
+                            <div class="pref-text"><strong>Salary range</strong><span>Rs.30k – Rs.195k</span></div>
+                        </div>
+                        <div class="pref-box shadow">
+                            <div class="pref-icon"><i class="bi bi-translate"></i></div>
+                            <div class="pref-text"><strong>Languages</strong><span>English, Nepali, Hindi</span></div>
+                        </div>
+                        <div class="pref-box shadow">
+                            <div class="pref-icon"><i class="bi bi-envelope"></i></div>
+                            <div class="pref-text"><strong>Response</strong><span>&lt;24h · hbm.nep@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2 justify-content-center mt-3">
+                        <span class="strength-chip"><i class="bi bi-cpu"></i> System Architecture</span>
+                        <span class="strength-chip"><i class="bi bi-lightning"></i> Performance</span>
+                        <span class="strength-chip"><i class="bi bi-people"></i> Leadership</span>
+                        <span class="strength-chip"><i class="bi bi-cloud-arrow-up"></i> Cloud Native</span>
+                        <span class="strength-chip"><i class="bi bi-diagram-3"></i> Microservices</span>
+                    </div>
+                </div>
+                <div class="tab-pane" id="academicPane">
+                    <div class="position-relative flow-wrapper" id="academicFlowWrapper">
+                        <div class="row g-3 g-md-4 row-ltr mb-4">
+                            <div class="col-12 col-md-6">
+                                <div class="card h-100 border-0 rounded-4 shadow-lg academic-card position-relative">
+                                    <span
+                                        class="position-absolute top-0 end-0 mt-2 mt-md-3 me-2 me-md-3 bg-opacity-10 fw-bold px-2 py-1 academic-badge-number">01</span>
+                                    <div class="card-body p-3 p-md-4">
+                                        <div class="d-flex flex-row flex-sm-nowrap gap-3">
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="academic-icon-large rounded-3 d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-mortarboard"></i>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h4 class="card-title fw-bold mb-1 fs-5 fs-md-4">B.Sc.CSIT Degree
+                                                    Graduate</h4>
+                                                <div class="d-flex flex-wrap gap-2 mt-1 mb-2">
+                                                    <span class="badge px-3 py-1 bg-title rounded-pill fw-semibold"><i
+                                                            class="bi bi-building me-1"></i>TU · AMC Nepal</span>
+                                                    <span
+                                                        class="badge bg-duration px-3 py-1 rounded-pill fw-semibold"><i
+                                                            class="bi bi-calendar3 me-1"></i>07 Jul, 2021</span>
+                                                </div>
+                                                <p class="card-text text-secondary small lh-base mb-3">Bachelors of
+                                                    Science in Computer Science and Information Technolog is Bachelor
+                                                    degree awarded by TU after the completions a 4 year(8 semester)
+                                                    program.</p>
+                                                <span
+                                                    class="badge bg-duration border px-3 py-1 rounded-pill fw-semibold d-inline-flex align-items-center gap-1"><i
+                                                        class="bi bi-star-fill text-warning small"></i>Feat · Best
+                                                    Internship Project</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="card h-100 border-0 rounded-4 shadow-lg academic-card position-relative">
+                                    <span
+                                        class="position-absolute top-0 end-0 mt-2 mt-md-3 me-2 me-md-3 bg-opacity-10 fw-bold px-2 py-1 academic-badge-number">02</span>
+                                    <div class="card-body p-3 p-md-4">
+                                        <div class="d-flex flex-row flex-sm-nowrap gap-3">
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="academic-icon-large rounded-3 d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-laptop"></i>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h4 class="card-title fw-bold mb-1 fs-5 fs-md-4">I.Sc. Degree Graduate
+                                                </h4>
+                                                <div class="d-flex flex-wrap gap-2 mt-1 mb-2">
+                                                    <span class="badge bg-title px-3 py-1 rounded-pill fw-semibold"><i
+                                                            class="bi bi-globe2 me-1"></i>NEB · DVC Nepal</span>
+                                                    <span
+                                                        class="badge bg-duration px-3 py-1 rounded-pill fw-semibold"><i
+                                                            class="bi bi-calendar-week me-1"></i>1 Jan, 2016</span>
+                                                </div>
+                                                <p class="card-text text-secondary small lh-base mb-3">Intermediate
+                                                    Science is academic degree awarded by National Examinations Board
+                                                    (NEB) after the completions of 12th grade.</p>
+                                                <span
+                                                    class="badge bg-duration border px-3 py-1 rounded-pill fw-semibold d-inline-flex align-items-center gap-1"><i
+                                                        class="bi bi-trophy small"></i>Honoree · Integrity Award</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-3 g-md-4 rtl-row">
+                            <div class="col-12 col-md-6">
+                                <div class="card h-100 border-0 rounded-4 shadow-lg academic-card position-relative">
+                                    <span
+                                        class="position-absolute top-0 end-0 mt-2 mt-md-3 me-2 me-md-3 bg-opacity-10 fw-bold px-2 py-1 academic-badge-number">03</span>
+                                    <div class="card-body p-3 p-md-4">
+                                        <div class="d-flex flex-row flex-sm-nowrap gap-3">
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="academic-icon-large rounded-3 d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-flask"></i>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h4 class="card-title fw-bold mb-1 fs-5 fs-md-4">SLC Degree Graduate
+                                                </h4>
+                                                <div class="d-flex flex-wrap gap-2 mt-1 mb-2">
+                                                    <span class="badge bg-title px-3 py-1 rounded-pill fw-semibold"><i
+                                                            class="bi bi-brush me-1"></i>NEB · SKSS · Nepal</span>
+                                                    <span
+                                                        class="badge bg-duration px-3 py-1 rounded-pill fw-semibold"><i
+                                                            class="bi bi-calendar-range me-1"></i>13 June, 2014</span>
+                                                </div>
+                                                <p class="card-text text-secondary small lh-base mb-3">School Leaving
+                                                    Certificates is academic degree awarded by National Examinations
+                                                    Board (NEB) after the completions of 10th grade.</p>
+                                                <span
+                                                    class="badge bg-duration border px-3 py-1 rounded-pill fw-semibold d-inline-flex align-items-center gap-1"><i
+                                                        class="bi bi-award-fill small"></i>Award · Top Scholar</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="card h-100 border-0 rounded-4 shadow-lg academic-card position-relative">
+                                    <span
+                                        class="position-absolute top-0 end-0 mt-2 mt-md-3 me-2 me-md-3 bg-opacity-10 fw-bold px-2 py-1 academic-badge-number">04</span>
+                                    <div class="card-body p-3 p-md-4">
+                                        <div class="d-flex flex-row flex-sm-nowrap gap-3">
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="academic-icon-large rounded-3 d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-book"></i>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h4 class="card-title fw-bold mb-1 fs-5 fs-md-4">BLE Degree Graduate
+                                                </h4>
+                                                <div class="d-flex flex-wrap gap-2 mt-1 mb-2">
+                                                    <span class="badge bg-title px-3 py-1 rounded-pill fw-semibold"><i
+                                                            class="bi bi-code-square me-1"></i>DAO · SKSS · Nepal</span>
+                                                    <span
+                                                        class="badge bg-duration px-3 py-1 rounded-pill fw-semibold"><i
+                                                            class="bi bi-calendar-heart me-1"></i>May 15, 2012</span>
+                                                </div>
+                                                <p class="card-text text-secondary small lh-base mb-3">Basic Level
+                                                    Examination is academic degree awarded by Local Government of
+                                                    Examination Committee after the completions of 8th grade.</p>
+                                                <span
+                                                    class="badge bg-duration border px-3 py-1 rounded-pill fw-semibold d-inline-flex align-items-center gap-1"><i
+                                                        class="bi bi-award small"></i>Award · Valedictorian
+                                                    Awarded</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="academicFlowSvgContainer" class="flow-svg-layer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price -->
+    <section class="price-wrapper" id="price">
+        <div class="container">
+            <div class="title-content text-center">
+                <h6 class="title-subhny mb-2"><span></span> exclusive deals <span></span></h6>
+                <h3>Simple, <span>transparent</span> pricing</h3>
+                <p class="sub-text">Choose the perfect plan for your next digital breakthrough</p>
+            </div>
+            <div class="pricing-swiper-wrapper">
+                <div class="swiper-btn-prev"><i class="bi bi-chevron-left"></i></div>
+                <div class="swiper-btn-next"><i class="bi bi-chevron-right"></i></div>
+                <div class="pricing-swiper swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="price-card shadow-lg"><span class="popular-badge badge-green">More
+                                    Affordable</span>
+                                <div class="price-card-content">
+                                    <div class="price-header"
+                                        style="background: url(../static/images/banner1.jpg) no-repeat center; background-size: cover;">
+                                        <h4>Essential</h4>
+                                        <p class="plan-tagline">Start smart, scale later</p>
+                                        <div class="price-info">
+                                            <div class="price"><span class="currency">Rs.</span>
+                                                <h3 class="heading">12,000</h3>
+                                            </div><span class="price-sub">+ one-time setup</span>
+                                        </div>
+                                    </div>
+                                    <div class="price-body">
+                                        <div class="inner">
+                                            <ul class="list-style">
+                                                <li><span class="check-icon"><i class="bi bi-check2"></i></span> 5 fully
+                                                    responsive projects</li>
+                                                <li><span class="check-icon"><i class="bi bi-check2"></i></span> 250K
+                                                    API requests / month</li>
+                                                <li><span class="check-icon"><i class="bi bi-check2"></i></span> 200MB
+                                                    secure cloud storage</li>
+                                                <li><span class="check-icon"><i class="bi bi-check2"></i></span> Weekly
+                                                    performance reports</li>
+                                                <li><span class="check-icon"><i class="bi bi-check2"></i></span>
+                                                    Priority email support</li>
+                                            </ul>
+                                        </div>
+                                        <div class="pricing-get-button"><a class="btn btn-primary w-100" href="#">Start
+                                                free trial <i class="bi bi-arrow-right ms-1"></i></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="price-card shadow-lg"><span class="popular-badge badge-gold"><i
+                                        class="bi bi-star-fill me-1"></i> Most Popular</span>
+                                <div class="price-card-content">
+                                    <div class="price-header"
+                                        style="background: url(../static/images/banner2.jpg) no-repeat center; background-size: cover;">
+                                        <h4>Professional</h4>
+                                        <p class="plan-tagline">Best for growing teams</p>
+                                        <div class="price-info">
+                                            <div class="price"><span class="currency">Rs.</span>
+                                                <h3 class="heading">25,000</h3>
+                                            </div><span class="price-sub">billed annually</span>
+                                        </div>
+                                    </div>
+                                    <div class="price-body">
+                                        <div class="inner">
+                                            <ul class="list-style">
+                                                <li><span class="check-icon"><i class="bi bi-check2"></i></span> 15
+                                                    projects + collaboration tools</li>
+                                                <li><span class="check-icon"><i class="bi bi-check2"></i></span> 1M API
+                                                    calls &amp; advanced analytics</li>
+                                                <li><span class="check-icon"><i class="bi bi-check2"></i></span> 500GB
+                                                    high‑speed storage</li>
+                                                <li><span class="check-icon"><i class="bi bi-check2"></i></span>
+                                                    Real-time team dashboards</li>
+                                                <li><span class="check-icon"><i class="bi bi-check2"></i></span> 24/7
+                                                    priority chat &amp; phone support</li>
+                                            </ul>
+                                        </div>
+                                        <div class="pricing-get-button"><a class="btn btn-primary w-100" href="#">Get
+                                                Professional <i class="bi bi-arrow-right ms-1"></i></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="price-card shadow-lg"><span class="popular-badge badge-blue">Recommended</span>
+                                <div class="price-card-content">
+                                    <div class="price-header"
+                                        style="background: url(../static/images/banner4.jpg) no-repeat center; background-size: cover;">
+                                        <h4>Elite</h4>
+                                        <p class="plan-tagline">Unlimited scale &amp; white‑glove</p>
+                                        <div class="price-info">
+                                            <div class="price"><span class="currency">Rs.</span>
+                                                <h3 class="heading">35,000</h3>
+                                            </div><span class="price-sub">+ custom onboarding</span>
+                                        </div>
+                                    </div>
+                                    <div class="price-body">
+                                        <div class="inner">
+                                            <ul class="list-style">
+                                                <li><span class="check-icon"><i class="bi bi-check2"></i></span>
+                                                    Unlimited projects + dedicated env</li>
+                                                <li><span class="check-icon"><i class="bi bi-check2"></i></span> 5M+ API
+                                                    quota / SLA guarantee</li>
+                                                <li><span class="check-icon"><i class="bi bi-check2"></i></span> 1TB
+                                                    storage + CDN edge cache</li>
+                                                <li><span class="check-icon"><i class="bi bi-check2"></i></span> Custom
+                                                    KPI reports &amp; consulting</li>
+                                                <li><span class="check-icon"><i class="bi bi-check2"></i></span> 24/7
+                                                    VIP support + solution architect</li>
+                                            </ul>
+                                        </div>
+                                        <div class="pricing-get-button"><a class="btn btn-primary w-100"
+                                                href="#">Contact sales <i class="bi bi-arrow-right ms-1"></i></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="price-card shadow-lg"><span class="popular-badge badge-purple">More Sales</span>
+                                <div class="price-card-content">
+                                    <div class="price-header"
+                                        style="background: url(../static/images/banner5.jpg) no-repeat center; background-size: cover;">
+                                        <h4>Enterprise Plus</h4>
+                                        <p class="plan-tagline">Tailored for visionaries</p>
+                                        <div class="price-info">
+                                            <div class="price"><span class="currency"
+                                                    style="font-size:1.2rem;">Custom</span>
+                                                <h3 class="heading" style="font-size:2.2rem;">Let's talk</h3>
+                                            </div><span class="price-sub">global infrastructure</span>
+                                        </div>
+                                    </div>
+                                    <div class="price-body">
+                                        <div class="inner">
+                                            <ul class="list-style">
+                                                <li><span class="check-icon"><i class="bi bi-check2"></i></span>
+                                                    Unlimited everything + SLA 99.99%</li>
+                                                <li><span class="check-icon"><i class="bi bi-check2"></i></span> Custom
+                                                    AI integrations &amp; dedicated team</li>
+                                                <li><span class="check-icon"><i class="bi bi-check2"></i></span>
+                                                    On‑premise / hybrid cloud options</li>
+                                                <li><span class="check-icon"><i class="bi bi-check2"></i></span>
+                                                    Strategic advisory &amp; success manager</li>
+                                                <li><span class="check-icon"><i class="bi bi-check2"></i></span> 24/7
+                                                    global enterprise hotline</li>
+                                            </ul>
+                                        </div>
+                                        <div class="pricing-get-button"><a class="btn btn-primary w-100"
+                                                href="#">Request consultation <i class="bi bi-arrow-right ms-1"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pricing-pagination swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- clients part -->
+    <section class="happy-client" id="clients">
+
+        <div class="client-bg" aria-hidden="true"></div>
+
+        <div class="client-head">
+            <span class="client-eyebrow"><span class="client-dot" aria-hidden="true"></span>Trusted by 300+ teams
+                worldwide</span>
+            <h1 class="client-title">Real stories from <span class="client-grad">real teams</span></h1>
+            <p class="client-sub">Specific outcomes from the people who use our product every single day</p>
+        </div>
+
+        <div id="client-carousel" class="client-carousel client-container swiper" role="region"
+            aria-roledescription="carousel" aria-label="Verified customer testimonials">
+
+            <div class="swiper-wrapper client-wrapper">
+
+                <!-- Slide 1 — Sarah Mitchell · Google -->
+                <div class="swiper-slide client-slide">
+                    <div class="client-img">
+                        <div class="client-top">
+                            <span class="client-source client-source--google">
+                                <span class="client-source-mark" aria-hidden="true">G</span>
+                                Google Review
+                            </span>
+                            <span class="client-date">2 weeks ago</span>
+                        </div>
+
+                        <div class="client-avatar-wrap">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=240&h=240&fit=crop"
+                                alt="Sarah Mitchell" loading="lazy" />
+                            <span class="client-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 12.5 9.5 18 20 6.5" />
+                                </svg>
+                            </span>
+                        </div>
+
+                        <span class="client-nameplate">
+                            <span class="client-nameplate-dot" aria-hidden="true"></span>
+                            <span class="client-nameplate-text">Sarah Mitchell</span>
+                        </span>
+                    </div>
+                    <div class="client-content">
+                        <div class="client-stars" aria-label="Rated 5 out of 5">
+                            <span class="client-star" aria-hidden="true">★★★★★</span>
+                            <span class="client-score">5.0</span>
+                            <span class="client-verified-pill">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M4 12.5 9.5 18 20 6.5" />
+                                </svg>
+                                Verified
+                            </span>
+                        </div>
+                        <p class="client-text">We switched our entire team over in a single afternoon. What used to take
+                            three separate tools now happens in one place. Sprint velocity is up about 40% since
+                            January.</p>
+                        <div class="client-author">
+                            <svg class="client-role-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="3" y="7" width="18" height="13" rx="2" />
+                                <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                            </svg>
+                            <span class="client-role"><strong>Product Lead</strong> at Stripe</span>
+                            <span class="client-helpful">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path
+                                        d="M7 22V11l5-9c1.5 0 2.5 1 2.5 2.5V10h5.5c1.1 0 2 .9 2 2l-1.5 8c-.2 1-1.1 2-2.2 2H7z" />
+                                    <path d="M2 22h5" />
+                                </svg>
+                                47
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 — Marcus Chen · G2 -->
+                <div class="swiper-slide client-slide">
+                    <div class="client-img">
+                        <div class="client-top">
+                            <span class="client-source client-source--g2">
+                                <span class="client-source-mark" aria-hidden="true">G2</span>
+                                G2 Review
+                            </span>
+                            <span class="client-date">1 month ago</span>
+                        </div>
+
+                        <div class="client-avatar-wrap">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=240&h=240&fit=crop"
+                                alt="Marcus Chen" loading="lazy" />
+                            <span class="client-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 12.5 9.5 18 20 6.5" />
+                                </svg>
+                            </span>
+                        </div>
+
+                        <span class="client-nameplate">
+                            <span class="client-nameplate-dot" aria-hidden="true"></span>
+                            <span class="client-nameplate-text">Marcus Chen</span>
+                        </span>
+                    </div>
+                    <div class="client-content">
+                        <div class="client-stars" aria-label="Rated 5 out of 5">
+                            <span class="client-star" aria-hidden="true">★★★★★</span>
+                            <span class="client-score">5.0</span>
+                            <span class="client-verified-pill">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M4 12.5 9.5 18 20 6.5" />
+                                </svg>
+                                Verified
+                            </span>
+                        </div>
+                        <p class="client-text">Smoothest onboarding I've seen in ten years of building software teams.
+                            New engineers were fully productive within their first week — that has never happened
+                            before.</p>
+                        <div class="client-author">
+                            <svg class="client-role-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="3" y="7" width="18" height="13" rx="2" />
+                                <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                            </svg>
+                            <span class="client-role"><strong>Engineering Manager</strong> at Shopify</span>
+                            <span class="client-helpful">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path
+                                        d="M7 22V11l5-9c1.5 0 2.5 1 2.5 2.5V10h5.5c1.1 0 2 .9 2 2l-1.5 8c-.2 1-1.1 2-2.2 2H7z" />
+                                    <path d="M2 22h5" />
+                                </svg>
+                                128
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 — David Okonkwo · Trustpilot -->
+                <div class="swiper-slide client-slide">
+                    <div class="client-img">
+                        <div class="client-top">
+                            <span class="client-source client-source--trustpilot">
+                                <span class="client-source-mark" aria-hidden="true">★</span>
+                                Trustpilot
+                            </span>
+                            <span class="client-date">3 weeks ago</span>
+                        </div>
+
+                        <div class="client-avatar-wrap">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=240&h=240&fit=crop"
+                                alt="David Okonkwo" loading="lazy" />
+                            <span class="client-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 12.5 9.5 18 20 6.5" />
+                                </svg>
+                            </span>
+                        </div>
+
+                        <span class="client-nameplate">
+                            <span class="client-nameplate-dot" aria-hidden="true"></span>
+                            <span class="client-nameplate-text">David Okonkwo</span>
+                        </span>
+                    </div>
+                    <div class="client-content">
+                        <div class="client-stars" aria-label="Rated 5 out of 5">
+                            <span class="client-star" aria-hidden="true">★★★★★</span>
+                            <span class="client-score">5.0</span>
+                            <span class="client-verified-pill">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M4 12.5 9.5 18 20 6.5" />
+                                </svg>
+                                Verified
+                            </span>
+                        </div>
+                        <p class="client-text">As a founder I need to see the full picture at a glance. This gave me
+                            back
+                            about six hours a week. I saw the ROI within the first month — no exaggeration.</p>
+                        <div class="client-author">
+                            <svg class="client-role-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="3" y="7" width="18" height="13" rx="2" />
+                                <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                            </svg>
+                            <span class="client-role"><strong>Founder &amp; CEO</strong> at Loop</span>
+                            <span class="client-helpful">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path
+                                        d="M7 22V11l5-9c1.5 0 2.5 1 2.5 2.5V10h5.5c1.1 0 2 .9 2 2l-1.5 8c-.2 1-1.1 2-2.2 2H7z" />
+                                    <path d="M2 22h5" />
+                                </svg>
+                                89
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 4 — Elena Fischer · Capterra -->
+                <div class="swiper-slide client-slide">
+                    <div class="client-img">
+                        <div class="client-top">
+                            <span class="client-source client-source--capterra">
+                                <span class="client-source-mark" aria-hidden="true">C</span>
+                                Capterra
+                            </span>
+                            <span class="client-date">5 days ago</span>
+                        </div>
+
+                        <div class="client-avatar-wrap">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=240&h=240&fit=crop"
+                                alt="Elena Fischer" loading="lazy" />
+                            <span class="client-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 12.5 9.5 18 20 6.5" />
+                                </svg>
+                            </span>
+                        </div>
+
+                        <span class="client-nameplate">
+                            <span class="client-nameplate-dot" aria-hidden="true"></span>
+                            <span class="client-nameplate-text">Elena Fischer</span>
+                        </span>
+                    </div>
+                    <div class="client-content">
+                        <div class="client-stars" aria-label="Rated 5 out of 5">
+                            <span class="client-star" aria-hidden="true">★★★★★</span>
+                            <span class="client-score">5.0</span>
+                            <span class="client-verified-pill">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M4 12.5 9.5 18 20 6.5" />
+                                </svg>
+                                Verified
+                            </span>
+                        </div>
+                        <p class="client-text">The attention to detail is what sold our design team. Every interaction
+                            feels intentional. We've already recommended it to three other teams across the
+                            company.</p>
+                        <div class="client-author">
+                            <svg class="client-role-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="3" y="7" width="18" height="13" rx="2" />
+                                <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                            </svg>
+                            <span class="client-role"><strong>Design Director</strong> at Figma</span>
+                            <span class="client-helpful">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path
+                                        d="M7 22V11l5-9c1.5 0 2.5 1 2.5 2.5V10h5.5c1.1 0 2 .9 2 2l-1.5 8c-.2 1-1.1 2-2.2 2H7z" />
+                                    <path d="M2 22h5" />
+                                </svg>
+                                62
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 5 — James Park · Product Hunt -->
+                <div class="swiper-slide client-slide">
+                    <div class="client-img">
+                        <div class="client-top">
+                            <span class="client-source client-source--producthunt">
+                                <span class="client-source-mark" aria-hidden="true">P</span>
+                                Product Hunt
+                            </span>
+                            <span class="client-date">2 months ago</span>
+                        </div>
+
+                        <div class="client-avatar-wrap">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=240&h=240&fit=crop"
+                                alt="James Park" loading="lazy" />
+                            <span class="client-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 12.5 9.5 18 20 6.5" />
+                                </svg>
+                            </span>
+                        </div>
+
+                        <span class="client-nameplate">
+                            <span class="client-nameplate-dot" aria-hidden="true"></span>
+                            <span class="client-nameplate-text">James Park</span>
+                        </span>
+                    </div>
+                    <div class="client-content">
+                        <div class="client-stars" aria-label="Rated 5 out of 5">
+                            <span class="client-star" aria-hidden="true">★★★★★</span>
+                            <span class="client-score">5.0</span>
+                            <span class="client-verified-pill">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M4 12.5 9.5 18 20 6.5" />
+                                </svg>
+                                Verified
+                            </span>
+                        </div>
+                        <p class="client-text">Customer support actually responds within minutes, not days. That alone
+                            was worth the switch. The product itself is just the cherry on top of an incredible
+                            team.</p>
+                        <div class="client-author">
+                            <svg class="client-role-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="3" y="7" width="18" height="13" rx="2" />
+                                <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                            </svg>
+                            <span class="client-role"><strong>Head of Operations</strong> at Notion</span>
+                            <span class="client-helpful">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path
+                                        d="M7 22V11l5-9c1.5 0 2.5 1 2.5 2.5V10h5.5c1.1 0 2 .9 2 2l-1.5 8c-.2 1-1.1 2-2.2 2H7z" />
+                                    <path d="M2 22h5" />
+                                </svg>
+                                214
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 6 — Priya Sharma · App Store -->
+                <div class="swiper-slide client-slide">
+                    <div class="client-img">
+                        <div class="client-top">
+                            <span class="client-source client-source--appstore">
+                                <span class="client-source-mark" aria-hidden="true">A</span>
+                                App Store
+                            </span>
+                            <span class="client-date">1 week ago</span>
+                        </div>
+
+                        <div class="client-avatar-wrap">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=240&h=240&fit=crop"
+                                alt="Priya Sharma" loading="lazy" />
+                            <span class="client-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 12.5 9.5 18 20 6.5" />
+                                </svg>
+                            </span>
+                        </div>
+
+                        <span class="client-nameplate">
+                            <span class="client-nameplate-dot" aria-hidden="true"></span>
+                            <span class="client-nameplate-text">Priya Sharma</span>
+                        </span>
+                    </div>
+                    <div class="client-content">
+                        <div class="client-stars" aria-label="Rated 5 out of 5">
+                            <span class="client-star" aria-hidden="true">★★★★★</span>
+                            <span class="client-score">5.0</span>
+                            <span class="client-verified-pill">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M4 12.5 9.5 18 20 6.5" />
+                                </svg>
+                                Verified
+                            </span>
+                        </div>
+                        <p class="client-text">Rock solid reliability for eighteen months straight. Zero downtime. Zero
+                            incidents. The kind of thing every CTO wants to be able to say about their stack.</p>
+                        <div class="client-author">
+                            <svg class="client-role-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="3" y="7" width="18" height="13" rx="2" />
+                                <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                            </svg>
+                            <span class="client-role"><strong>CTO</strong> at Vercel</span>
+                            <span class="client-helpful">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path
+                                        d="M7 22V11l5-9c1.5 0 2.5 1 2.5 2.5V10h5.5c1.1 0 2 .9 2 2l-1.5 8c-.2 1-1.1 2-2.2 2H7z" />
+                                    <path d="M2 22h5" />
+                                </svg>
+                                156
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 7 — Aisha Patel · Google -->
+                <div class="swiper-slide client-slide">
+                    <div class="client-img">
+                        <div class="client-top">
+                            <span class="client-source client-source--google">
+                                <span class="client-source-mark" aria-hidden="true">G</span>
+                                Google Review
+                            </span>
+                            <span class="client-date">4 days ago</span>
+                        </div>
+
+                        <div class="client-avatar-wrap">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=240&h=240&fit=crop"
+                                alt="Aisha Patel" loading="lazy" />
+                            <span class="client-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 12.5 9.5 18 20 6.5" />
+                                </svg>
+                            </span>
+                        </div>
+
+                        <span class="client-nameplate">
+                            <span class="client-nameplate-dot" aria-hidden="true"></span>
+                            <span class="client-nameplate-text">Aisha Patel</span>
+                        </span>
+                    </div>
+                    <div class="client-content">
+                        <div class="client-stars" aria-label="Rated 5 out of 5">
+                            <span class="client-star" aria-hidden="true">★★★★★</span>
+                            <span class="client-score">5.0</span>
+                            <span class="client-verified-pill">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M4 12.5 9.5 18 20 6.5" />
+                                </svg>
+                                Verified
+                            </span>
+                        </div>
+                        <p class="client-text">The team finally has a single source of truth. Campaigns ship twice as
+                            fast because everyone is looking at the same data. Our Monday syncs went from 45 minutes
+                            to 10.</p>
+                        <div class="client-author">
+                            <svg class="client-role-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="3" y="7" width="18" height="13" rx="2" />
+                                <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                            </svg>
+                            <span class="client-role"><strong>Marketing Lead</strong> at Airbnb</span>
+                            <span class="client-helpful">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path
+                                        d="M7 22V11l5-9c1.5 0 2.5 1 2.5 2.5V10h5.5c1.1 0 2 .9 2 2l-1.5 8c-.2 1-1.1 2-2.2 2H7z" />
+                                    <path d="M2 22h5" />
+                                </svg>
+                                73
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="client-controls">
+            <div class="client-progress" aria-hidden="true">
+                <div class="client-progress-bar"></div>
+            </div>
+
+            <div class="swiper-pagination client-pagination" role="tablist" aria-label="Testimonial navigation"></div>
+
+            <div class="client-arrows">
+                <button type="button" class="client-nav client-play" aria-label="Pause autoplay" aria-pressed="true">
+                    <svg class="client-icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <rect x="6" y="4" width="4" height="16" rx="1" />
+                        <rect x="14" y="4" width="4" height="16" rx="1" />
+                    </svg>
+                    <svg class="client-icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                </button>
+
+                <button type="button" class="client-nav client-prev" aria-label="Previous testimonial">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <path d="M15 5 8 12l7 7" />
+                    </svg>
+                </button>
+
+                <button type="button" class="client-nav client-next" aria-label="Next testimonial">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <path d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+    </section>
+    <!-- end-client -->
+
+     <!-- Free consultation -->
+    <section class="container">
+        <div class="w3l-project p-md-5 p-4 px-4">
+            <div class="row py-lg-4 px-lg-2 align-items-center">
+                <div class="col-lg-8 w3l-project-right">
+                    <div class="bottom-info">
+                        <div class="header-section pr-lg-5">
+                            <h3 class="title-w3l two">Request Free Consultation <br>and <span class="span-bold">Lets Do
+                                    It!</span></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 w3l-project-left mt-lg-0 mt-4">
+                    <a href="#" class="btn btn-secondary btn-style"> Request Now <span
+                            class="fas fa-angle-double-right ms-2"></span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- contact -->
+    <section class="contact-wrapper" id="contact">
+        <div class="row g-0 contact-content-row">
+    
+            <!-- Left Side -->
+            <div class="col-lg-6 contact-form-section">
+    
+                <!-- Geometric Animated Background -->
+                <div class="contact-geo-background">
+                    <div class="contact-shape contact-shape-square"></div>
+                    <div class="contact-shape contact-shape-square-sm contact-sq-1"></div>
+                    <div class="contact-shape contact-shape-square-sm contact-sq-2"></div>
+                    <div class="contact-shape contact-shape-square-sm contact-sq-3"></div>
+    
+                    <div class="contact-shape contact-shape-bubble contact-bubble-1"></div>
+                    <div class="contact-shape contact-shape-bubble contact-bubble-2"></div>
+                    <div class="contact-shape contact-shape-bubble contact-bubble-3"></div>
+                </div>
+    
+                <!-- Form Content -->
+                <div class="contact-form-content">
+                    <h1>Get in touch</h1>
+                    <p class="contact-subtitle">Let us know how can i help.</p>
+    
+                    <span class="contact-support-label">Choose support Query</span>
+                    <div class="contact-support-buttons">
+                        <button type="button" class="contact-support-btn" id="contact-btn-customer">
+                            <i class="far fa-user"></i> Course Inquery
+                        </button>
+                        <button type="button" class="contact-support-btn contact-active" id="contact-btn-technical">
+                            <i class="fas fa-headset"></i> Technical support
+                        </button>
+                    </div>
+    
+                    <div class="contact-gradient-line-container">
+                        <div class="contact-gradient-line" id="contact-gradient-indicator"
+                            style="transform: translateX(100%);"></div>
+                    </div>
+    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-text">
+                                <h6>Address</h6>
+                                <p>Madi 05, Rolpa 22400, Nepal</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="contact-text">
+                                <h6>Phone</h6>
+                                <p>+977 9848130395</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-text">
+                                <h6>Email</h6>
+                                <p>hbm.nep@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="contact-social-media">
+                        <h6>Connect with us</h6>
+                        <div class="contact-social-links">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Right Side: Map -->
+            <div class="col-lg-6 contact-map-section">
+                <iframe class="contact-map-iframe"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d180.82662976163093!2d82.52717364077691!3d28.381068629760932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3997e13ba75b0a67%3A0x7b091ec3cb8c7bef!2sMadi%20Rural%20Municipality%2C%20Ward%20No.%205%20Office!5e1!3m2!1sen!2snp!4v1792571605258!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen="" loading="lazy" title="Office Location">
+                </iframe>
+                
+    
+                <i class="fas fa-map-marker-alt contact-map-pin"></i>
+    
+                <div class="contact-map-overlay-card">
+                    <div class="contact-map-overlay-text">
+                        <h6>Madi 05 Rolpa</h6>
+                        <p>Nepal</p>
+                    </div>
+                    <i class="fas fa-location-arrow contact-map-overlay-icon" title="Get Directions"></i>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+    <!-- end contact -->
+
+    <!-- Footer -->
+    <footer class="footer-dep" id="contact">
+        <div class="extended_footer">
+            <div class="container">
+                <div class="row py-lg-4 py-2 justify-content-center">
+                    <div class="col-md-3">
+                        <div class="footer-main">
+                            <h5 class="pb-lg-3 pb-2">My Strength</h5>
+                            <p class="p1 py-2">"Accelerating the Professional Programming skills"</p>
+                            <p class="p2 py-lg-3">Its provide high-quality online courses and training programs to help
+                                individuals enhance their skills and advance their careers in the tech industry.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="footer-items">
+                            <h5 class="ef_title"><a href="#ef_products" class="collapsed" role="button"
+                                    data-bs-toggle="collapse" aria-expanded="false" aria-controls="ef_products">Recent
+                                    Projects<i class="bi bi-chevron-down toggle-icon"></i></a></h5>
+                            <div class="collapse pt-lg-3 pt-1" id="ef_products">
+                                <ul class="d-flex flex-column gap-3 list-unstyled">
+                                    <li><a class="fgutter" href=""><i
+                                                class="fa-solid fa-chalkboard-user"></i><span>Inventory
+                                                System</span></a></li>
+                                    <li><a class="fgutter" href=""><i
+                                                class="fa-solid fa-clipboard-list"></i><span>Attendance
+                                                System</span></a></li>
+                                    <li><a class="fgutter" href=""><i
+                                                class="fa-solid fa-briefcase-medical"></i><span>Tracking
+                                                System</span></a></li>
+                                    <li><a class="fgutter" href=""><i class="fa-solid fa-burger"></i><span>Detection
+                                                System</span></a></li>
+                                    <li><a class="fgutter" href=""><i
+                                                class="fa-solid fa-bag-shopping"></i><span>Prediction System</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="footer-items">
+                            <h5 class="ef_title"><a href="#onlinet_training" class="collapsed" role="button"
+                                    data-bs-toggle="collapse" aria-expanded="false"
+                                    aria-controls="onlinet_training">Online Training<i
+                                        class="bi bi-chevron-down toggle-icon"></i></a></h5>
+                            <div class="collapse pt-lg-3 pt-1" id="onlinet_training">
+                                <ul class="d-flex flex-column gap-3 list-unstyled">
+                                    <li><a class="fgutter" href=""><i class="fa-brands fa-python"></i><span>Advace
+                                                Python</span></a></li>
+                                    <li><a class="fgutter" href=""><i class="fa-brands fa-dailymotion"></i><span>Django
+                                                REST Framework</span></a></li>
+                                    <li><a class="fgutter" href=""><i class="fa-brands fa-react"></i><span>React
+                                                v19.1</span></a></li>
+                                    <li><a class="fgutter" href=""><i
+                                                class="fa-brands fa-node-js"></i><span>JavaScript</span></a></li>
+                                    <li><a class="fgutter" href=""><i
+                                                class="fa-brands fa-bootstrap"></i><span>Bootstrap5.3 &
+                                                CSS3.0</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="footer-items">
+                            <h5 class="ef_title"><a href="#contact_us" class="collapsed" role="button"
+                                    data-bs-toggle="collapse" aria-expanded="false" aria-controls="contact_us">Get Us
+                                    Support<i class="bi bi-chevron-down toggle-icon"></i></a></h5>
+                            <div class="collapse pt-lg-3 pt-1" id="contact_us">
+                                <ul class="d-flex flex-column gap-3 list-unstyled">
+                                    <li><a class="fgutter" href="tel:+(977) 9848130395"><i
+                                                class="fa-solid fa-phone-volume"></i>
+                                            <div>
+                                                <h5>Phone Call:</h5><span>+(977) 9848130395</span>
+                                            </div>
+                                        </a></li>
+                                    <li><a class="fgutter" href=""><i class="fa-solid fa-location-dot"></i>
+                                            <div>
+                                                <h5>Address:</h5><span>Madi 5 Rolpa, Nepal - 22400.</span>
+                                            </div>
+                                        </a></li>
+                                    <li><a class="fgutter" href="mailto:hbm.nep@gmail.com"><i
+                                                class="fa-regular fa-envelope"></i>
+                                            <div>
+                                                <h5>Send Email:</h5><span>hbm.nep@gmail.com</span>
+                                            </div>
+                                        </a></li>
+                                </ul>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" aria-label="Sizing example input"
+                                        placeholder="Send your Email">
+                                    <span class="input-group-text gradient-bg"><i class="bi bi-send"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-md-12">
+                        <div class="np-footer"><button type="button"><a href=""><i
+                                        class="bi bi-globe-americas-fill"></i>Nepal</a></button></div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-12">
+                        <div class="footer-law">
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><a href="">Trust Center</a></li>
+                                <li class="list-inline-item"><a href="">Trademarks</a></li>
+                                <li class="list-inline-item"><a href="">Privacy policy</a></li>
+                                <li class="list-inline-item"><a href="">Terms of use</a></li>
+                                <li class="list-inline-item"><a href="">Contact Us</a></li>
+                            </ul>
+                            <span class="last-footer">&copy; 2026 All rights reserved by hbm</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-lg-12">
+                        <div class="footer-social">
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item"><a href=""><i class="bi bi-facebook"></i></a></li>
+                                <li class="list-inline-item"><a href=""><i class="bi bi-linkedin"></i></a></li>
+                                <li class="list-inline-item"><a href=""><i class="bi bi-whatsapp"></i></a></li>
+                                <li class="list-inline-item"><a href=""><i class="bi bi-github"></i></a></li>
+                                <li class="list-inline-item"><a href=""><i class="bi bi-twitter-x"></i></a></li>
+                                <li class="list-inline-item"><a href=""><i class="bi bi-youtube"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button onclick="topFunction()" id="movetop" title="Go to top"><span class="bi bi-arrow-bar-up"></span></button>
+    </footer>
+
+    <script src="./static/js/jquery-3.7.1.min.js" defer></script>
+    <script src="./static/js/bootstrap.bundle.min.js" defer></script>
+    <script src="./static/js/swiper-bundle.min.js" defer></script>
+    <script src="./static/js/popper.min.js" defer></script>
+    <script src="./static/js/custome.js" defer></script>
+    <script src="./static/js/theme-change.js" defer></script>
+
+</body>
+
+</html>
