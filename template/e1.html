@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Everest IT delivers future-ready IT solutions, managed services, cybersecurity, training, and recruitment. Technology, Trust & Transformation.">
+    <title>Everest IT | Technology, Trust & Transformation</title>
+    <!-- Bootstrap 5 CSS + Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        /* ----- CORE STYLES (only used elements) ----- */
+        body {
+            background: #ffffff;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e2a3a;
+        }
+
+        .text-brand-navy { color: #0c365d; }
+        .text-brand-orange { color: #f26323; }
+
+        .btn-outline-brand {
+            border: 2px solid #0c365d;
+            color: #0c365d;
+            border-radius: 3rem;
+            padding: 0.7rem 2rem;
+            font-weight: 600;
+            transition: all 0.25s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .btn-outline-brand:hover {
+            background-color: #0c365d;
+            color: white;
+            border-color: #0c365d;
+        }
+        .btn-outline-brand:hover i {
+            transform: translateX(4px);
+        }
+
+        .feature-list-custom {
+            list-style: none;
+            padding-left: 0;
+        }
+        .feature-list-custom li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.875rem;
+            font-weight: 500;
+            color: #0c365d;
+        }
+        .feature-list-custom li i {
+            font-size: 1.3rem;
+            color: #f26323;
+            background: rgba(242, 99, 35, 0.1);
+            border-radius: 50%;
+            padding: 0.2rem;
+        }
+
+        .image-frame {
+            background: #f6f8f5;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s ease;
+        }
+        .image-frame:hover {
+            transform: scale(1.01);
+        }
+
+        .hero-visual {
+            position: relative;
+            overflow: visible;
+        }
+
+        /* floating badge base */
+        .floating-badge {
+            position: absolute;
+            padding: 0.6rem 1.3rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            backdrop-filter: blur(4px);
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+            z-index: 10;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: box-shadow 0.2s;
+        }
+        .floating-badge:hover {
+            box-shadow: 0 15px 28px rgba(0, 0, 0, 0.15);
+        }
+
+        .badge-orange { background: #f26323; color: white; }
+        .badge-blue-light { background: #e4f0fb; color: #0c365d; }
+        .badge-dark { background: #0c365d; color: white; }
+
+        /* ===== ANIMATIONS ===== */
+        .left-right-animation {
+            animation: leftRight 3s infinite alternate ease-in-out;
+        }
+        @keyframes leftRight {
+            from { transform: translateX(0); }
+            to { transform: translateX(50px); }
+        }
+
+        .top-bottom-animation {
+            animation: topBottom 3s infinite alternate ease-in-out;
+        }
+        @keyframes topBottom {
+            from { transform: translateY(0); }
+            to { transform: translateY(50px); }
+        }
+
+        .left-right-reverse {
+            animation: leftRightReverse 3.2s infinite alternate ease-in-out;
+        }
+        @keyframes leftRightReverse {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50px); }
+        }
+
+        .top-bottom-reverse {
+            animation: topBottomReverse 3.4s infinite alternate ease-in-out;
+        }
+        @keyframes topBottomReverse {
+            from { transform: translateY(0); }
+            to { transform: translateY(-50px); }
+        }
+
+        .anim-slow { animation-duration: 4s; }
+
+        /* ===== BADGE POSITIONS (over image) ===== */
+        .badge-1 { bottom: 50%; left: 3%; }
+        .badge-2 { top: 20%; right: 4%; }
+        .badge-3 { bottom: 18%; left: 15%; }
+        .badge-4 { bottom: 18%; right: 8%; }
+        .badge-5 { top: 18%; left: 5%; }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .floating-badge {  font-size: 0.85rem; }
+           
+        }
+        @media (max-width: 768px) {
+            .floating-badge {  font-size: 0.78rem; }
+        }
+        @media (max-width: 576px) {
+            .floating-badge {  font-size: 0.7rem; }
+           
+        }
+    </style>
+</head>
+<body>
+
+<div class="container py-5 my-3">
+    <div class="row align-items-center g-5">
+        <!-- Left column: text -->
+        <div class="col-lg-6">
+            <h1 class="display-3 fw-bold text-brand-navy mb-4">
+                Technology, <span class="text-brand-orange">Trust</span> &<br>Transformation
+            </h1>
+            <p class="lead text-secondary mb-4">
+                Everest IT delivers future-ready IT solutions, managed services, cybersecurity,
+                expert training, and talent acquisition — empowering businesses with innovation
+                and absolute reliability.
+            </p>
+            <ul class="feature-list-custom mb-4">
+                <li><i class="bi bi-check-circle-fill"></i> End-to-end IT consulting & digital transformation</li>
+                <li><i class="bi bi-check-circle-fill"></i> Enterprise-grade managed services & cloud solutions</li>
+                <li><i class="bi bi-check-circle-fill"></i> Cybersecurity, compliance & data protection</li>
+                <li><i class="bi bi-check-circle-fill"></i> Corporate IT training & skill development</li>
+                <li><i class="bi bi-check-circle-fill"></i> Strategic IT recruitment & staffing</li>
+            </ul>
+            <a href="#" class="btn btn-outline-brand" aria-label="Explore services">
+                Explore our solutions <i class="bi bi-arrow-right-short"></i>
+            </a>
+        </div>
+<!-- https://everestit.com.np/wp-content/uploads/2025/12/Technology-Trust-and-Transformation-Everest-IT-1.png -->
+        <!-- Right column: image with badges -->
+        <div class="col-lg-6 hero-visual">
+            <div class="image-frame">
+                <img class="img-fluid w-100" 
+                     src="../static/images/banner.png"
+                     alt="Everest IT - Technology, Trust & Transformation"
+                     loading="eager"
+                     width="600" height="620">
+            </div>
+
+            <!-- Badges: each with unique animation -->
+            <!-- IT Projects: now uses up-down (top-bottom) direction as requested -->
+            <div class="floating-badge badge-1 badge-orange top-bottom-animation">
+                <i class="bi bi-diagram-3 me-1"></i> IT Projects
+            </div>
+            <!-- IT Managed Services (up-down) -->
+            <div class="floating-badge badge-2 badge-blue-light top-bottom-animation">
+                <i class="bi bi-cloud-check me-1"></i> IT Managed Services
+            </div>
+            <!-- IT Training (left-right reverse) -->
+            <div class="floating-badge badge-3 badge-dark left-right-reverse">
+                <i class="bi bi-mortarboard me-1"></i> IT Training
+            </div>
+            <!-- Recruitment (top-bottom reverse) -->
+            <div class="floating-badge badge-4 badge-orange top-bottom-reverse">
+                <i class="bi bi-people me-1"></i> Recruitment
+            </div>
+            <!-- Cyber Security (left-right, slower) -->
+            <div class="floating-badge badge-5 badge-blue-light left-right-animation anim-slow">
+                <i class="bi bi-shield-lock me-1"></i> Cyber Security
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

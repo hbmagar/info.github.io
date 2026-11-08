@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Editor · Two-Column Showcase</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ── reset & base ── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 100%;
+        }
+
+        body {
+            font-family: 'Lato', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            background: #0d0d1a;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(12px, 2vw, 32px);
+        }
+
+        /* ── outer editor frame ── */
+        .illustration-editor {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 900px;
+            aspect-ratio: 16 / 9;
+            background: radial-gradient(ellipse at 30% 40%, #1a1a30 0%, #0b0b18 100%);
+            border: 1px solid #2a2a42;
+            border-radius: clamp(10px, 1.2vw, 18px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            position: relative;
+            padding: clamp(15px, 3vw, 40px);
+        }
+
+        /* ── code cards container ── */
+        .coder-main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: clamp(5px, 0.9vw, 14px);
+            align-items: flex-start;
+            padding: clamp(10px, 2vw, 28px) clamp(6px, 1.2vw, 18px);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── code cards ── */
+        .code-card {
+            position: relative;
+            background: #1e1e2e;
+            border: 1px solid #97979b;
+            border-radius: clamp(5px, 0.7vw, 10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+            color: #e8e8f0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(18px) scale(0.97);
+            transition:
+                opacity 0.55s cubic-bezier(0.23, 1, 0.32, 1),
+                transform 0.55s cubic-bezier(0.23, 1, 0.32, 1),
+                visibility 0.55s ease;
+            display: flex;
+            flex-direction: column;
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .code-card.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        /* ── staggered horizontal offsets ── */
+        .code-card--py {
+            margin-left: 0%;
+            z-index: 1;
+        }
+        .code-card--dj {
+            margin-left: 10%;
+            z-index: 2;
+        }
+        .code-card--react {
+            margin-left: 4%;
+            z-index: 3;
+        }
+
+        .code-card__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: clamp(3px, 0.4vw, 7px) clamp(7px, 0.8vw, 14px);
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid #2a2a3e;
+            font-size: clamp(9px, 0.9vw, 14px);
+            letter-spacing: clamp(0.6px, 0.1vw, 1.6px);
+            font-weight: 700;
+            color: #a0a0b8;
+            user-select: none;
+            flex-shrink: 0;
+            gap: clamp(3px, 0.4vw, 8px);
+        }
+
+        .code-card__dots {
+            display: flex;
+            align-items: center;
+            gap: clamp(2px, 0.35vw, 5px);
+            flex-shrink: 0;
+        }
+
+        .code-card__dot {
+            display: inline-block;
+            width: clamp(5px, 0.6vw, 9px);
+            height: clamp(5px, 0.6vw, 9px);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .code-card__dot--red { background: #e85a5a; }
+        .code-card__dot--yellow { background: #e8c85a; }
+        .code-card__dot--green { background: #5ae8a0; }
+
+        .code-card__title {
+            flex: 1;
+            text-align: center;
+            font-size: clamp(8px, 0.8vw, 13px);
+            letter-spacing: clamp(0.8px, 0.13vw, 2px);
+            color: #b0b0cc;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .code-card__chevron {
+            color: #3a3a52;
+            font-size: clamp(8px, 0.85vw, 14px);
+            flex-shrink: 0;
+        }
+
+        .code-card__body {
+            padding: clamp(3px, 0.45vw, 8px) clamp(5px, 0.65vw, 12px) clamp(4px, 0.5vw, 9px);
+            font-size: clamp(9px, 1vw, 16px);
+            line-height: 1.6;
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Menlo', 'Consolas', monospace;
+            background: transparent;
+            flex: 1 1 auto;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .code-lines {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .code-line {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: clip;
+            min-height: 1.5em;
+            letter-spacing: 0.02em;
+            line-height: inherit;
+        }
+
+        .code-line.indent-1 { margin-left: clamp(1.5ch, 2.2ch, 2.8ch); }
+        .code-line.indent-2 { margin-left: clamp(3ch, 4.4ch, 5.5ch); }
+
+        .syn-r { color: #c5867a; }
+        .syn-o { color: #de7300; }
+        .syn-y { color: #e1ca72; }
+        .syn-g { color: #74b087; }
+        .syn-b { color: #7a99ad; }
+        .syn-c { color: #6a6a7a; }
+        .syn-w { color: #e8e8f0; }
+        .syn-p { color: #c0c0d0; }
+
+        .typing-cursor {
+            display: inline-block;
+            width: clamp(1.2px, 0.16vw, 2.5px);
+            height: 1.05em;
+            background: #c0c0d0;
+            margin-left: 1px;
+            vertical-align: text-bottom;
+            border-radius: 1px;
+            flex-shrink: 0;
+            animation: blink 0.7s step-end infinite;
+        }
+        .typing-cursor.hidden { display: none; }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* ── responsive font sizes ── */
+        @media (min-width: 1400px) {
+            .code-card__body { font-size: clamp(13px, 1.05vw, 17px); }
+            .code-card__header { font-size: clamp(11px, 0.85vw, 15px); }
+            .code-card__title { font-size: clamp(10px, 0.78vw, 14px); }
+        }
+
+        @media (max-width: 900px) {
+            .illustration-editor {
+                aspect-ratio: 4 / 3;
+                max-width: 95vw;
+            }
+            .coder-main {
+                padding: clamp(8px, 2vw, 16px);
+                gap: clamp(5px, 1.2vw, 12px);
+            }
+            .code-card__body { font-size: clamp(9px, 1.4vw, 14px); }
+            .code-card__header { font-size: clamp(9px, 1.25vw, 13px); }
+            .code-card__title { font-size: clamp(8px, 1.1vw, 12px); }
+            .code-card--dj { margin-left: 14%; }
+            .code-card--react { margin-left: 7%; }
+        }
+
+        @media (max-width: 640px) {
+            .illustration-editor {
+                aspect-ratio: 0.85 / 1;
+                border-radius: 0.8rem;
+            }
+            .coder-main {
+                padding: clamp(6px, 2vw, 12px);
+                gap: clamp(4px, 1vw, 9px);
+            }
+            .code-card__body { font-size: clamp(8.5px, 1.8vw, 13px); }
+            .code-card__header { font-size: clamp(8.5px, 1.6vw, 12px); }
+            .code-card__title { font-size: clamp(8px, 1.4vw, 11px); }
+            .code-card--dj { margin-left: 12%; }
+            .code-card--react { margin-left: 6%; }
+        }
+
+        @media (max-width: 420px) {
+            .illustration-editor {
+                aspect-ratio: 0.72 / 1;
+                border-radius: 0.6rem;
+            }
+            .coder-main {
+                padding: clamp(5px, 1.8vw, 10px);
+                gap: clamp(3px, 0.9vw, 7px);
+            }
+            .code-card__body { font-size: clamp(8px, 2.2vw, 12px); line-height: 1.5; }
+            .code-card__header { font-size: clamp(8px, 2vw, 11px); padding: clamp(2px, 0.5vw, 5px) clamp(5px, 1vw, 9px); }
+            .code-card__title { font-size: clamp(7.5px, 1.8vw, 10px); }
+            .code-card__dot { width: clamp(4px, 0.8vw, 7px); height: clamp(4px, 0.8vw, 7px); }
+            .code-card--dj { margin-left: 8%; }
+            .code-card--react { margin-left: 4%; }
+        }
+
+        @media (max-width: 360px) {
+            .coder-main {
+                padding: clamp(4px, 1.5vw, 8px);
+                gap: clamp(2px, 0.7vw, 5px);
+            }
+            .code-card__body { font-size: clamp(7.5px, 2.5vw, 11px); line-height: 1.45; }
+            .code-card__header { font-size: clamp(7.5px, 2.3vw, 10px); }
+            .code-card__title { font-size: clamp(7px, 2vw, 9px); }
+            .code-card--dj { margin-left: 5%; }
+            .code-card--react { margin-left: 2%; }
+            .code-line.indent-1 { margin-left: clamp(1ch, 1.8ch, 2.2ch); }
+            .code-line.indent-2 { margin-left: clamp(2ch, 3.6ch, 4.4ch); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .code-card {
+                transition: none !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+            }
+            .typing-cursor {
+                animation: none !important;
+                opacity: 0 !important;
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="illustration-editor">
+        <section class="coder-main">
+            <!-- Python Card -->
+            <div class="code-card code-card--py" id="card-py" aria-label="Python code snippet">
+                <div class="code-card__header">
+                    <span class="code-card__dots" aria-hidden="true">
+                        <span class="code-card__dot code-card__dot--red"></span>
+                        <span class="code-card__dot code-card__dot--yellow"></span>
+                        <span class="code-card__dot code-card__dot--green"></span>
+                    </span>
+                    <span class="code-card__title">main.py</span>
+                    <span class="code-card__chevron" aria-hidden="true">⌄</span>
+                </div>
+                <div class="code-card__body">
+                    <ul class="code-lines">
+                        <li class="code-line-source" data-plain="class Contact:" data-indent="0"><span class="syn-r">class</span> <span class="syn-g">Contact</span><span class="syn-w">:</span></li>
+                        <li class="code-line-source" data-plain="def __init__(self, portfolio):" data-indent="1"><span class="syn-r">def</span> <span class="syn-y">__init__</span><span class="syn-p">(</span><span class="syn-r">self</span>, <span class="syn-g">portfolio</span><span class="syn-p">):</span></li>
+                        <li class="code-line-source" data-plain="self.item = portfolio" data-indent="2"><span class="syn-r">self</span><span class="syn-y">.</span><span class="syn-y">item</span> <span class="syn-w">=</span> <span class="syn-g">portfolio</span></li>
+                        <li class="code-line-source" data-plain="print('visit ' + self.item)" data-indent="2"><span class="syn-r">print</span><span class="syn-p">(</span><span class="syn-g">'visit '</span> <span class="syn-o">+</span> <span class="syn-r">self</span><span class="syn-y">.</span><span class="syn-y">item</span><span class="syn-p">)</span></li>
+                        <li class="code-line-source" data-plain='obj = Contact("https://hbm.info.np/")' data-indent="0"><span class="syn-r">obj</span> <span class="syn-w">=</span> <span class="syn-r">Contact</span><span class="syn-p">(</span><span class="syn-g">"https://hbm.info.np/"</span><span class="syn-p">)</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Django Card -->
+            <div class="code-card code-card--dj" id="card-dj" aria-label="Django models code snippet">
+                <div class="code-card__header">
+                    <span class="code-card__dots" aria-hidden="true">
+                        <span class="code-card__dot code-card__dot--red"></span>
+                        <span class="code-card__dot code-card__dot--yellow"></span>
+                        <span class="code-card__dot code-card__dot--green"></span>
+                    </span>
+                    <span class="code-card__title">models.py</span>
+                    <span class="code-card__chevron" aria-hidden="true">⌄</span>
+                </div>
+                <div class="code-card__body">
+                    <ul class="code-lines">
+                        <li class="code-line-source" data-plain="from django.db import models" data-indent="0"><span class="syn-y">from</span> <span class="syn-b">django.db</span> <span class="syn-y">import</span> <span class="syn-b">models</span></li>
+                        <li class="code-line-source" data-plain="class Contact(models.Model):" data-indent="0"><span class="syn-r">class</span> <span class="syn-y">Contact</span><span class="syn-p">(</span><span class="syn-r">models</span><span class="syn-y">.</span><span class="syn-g">Model</span><span class="syn-p">):</span></li>
+                        <li class="code-line-source" data-plain="name = models.CharField(max_length=100)" data-indent="1"><span class="syn-r">name</span> <span class="syn-w">=</span> <span class="syn-r">models</span><span class="syn-y">.</span><span class="syn-g">CharField</span><span class="syn-p">(</span><span class="syn-b">max_length</span><span class="syn-w">=</span><span class="syn-g">100</span><span class="syn-p">)</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- React / JS Card -->
+            <div class="code-card code-card--react" id="card-react" aria-label="JavaScript animation code snippet">
+                <div class="code-card__header">
+                    <span class="code-card__dots" aria-hidden="true">
+                        <span class="code-card__dot code-card__dot--red"></span>
+                        <span class="code-card__dot code-card__dot--yellow"></span>
+                        <span class="code-card__dot code-card__dot--green"></span>
+                    </span>
+                    <span class="code-card__title">animation.js</span>
+                    <span class="code-card__chevron" aria-hidden="true">⌄</span>
+                </div>
+                <div class="code-card__body">
+                    <ul class="code-lines">
+                        <li class="code-line-source" data-plain='const elements = ["#74B087", "#DE7300"];' data-indent="0"><span class="syn-y">const</span> <span class="syn-b">elements</span> <span class="syn-w">=</span> <span class="syn-p">[</span><span class="syn-g">"#74B087"</span>, <span class="syn-g">"#DE7300"</span><span class="syn-p">];</span></li>
+                        <li class="code-line-source" data-plain="// Initialize the animation loop" data-indent="0"><span class="syn-c">// Initialize the animation loop</span></li>
+                        <li class="code-line-source" data-plain="function animateElements(timestamp) {" data-indent="0"><span class="syn-y">function</span> <span class="syn-b">animateElements</span><span class="syn-p">(</span><span class="syn-b">timestamp</span><span class="syn-p">)</span> <span class="syn-w">{</span></li>
+                        <li class="code-line-source" data-plain="  requestAnimationFrame(animateElements);" data-indent="1"><span class="syn-b">requestAnimationFrame</span><span class="syn-p">(</span><span class="syn-b">animateElements</span><span class="syn-p">);</span></li>
+                        <li class="code-line-source" data-plain="}" data-indent="0"><span class="syn-w">}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Code card typing animation script -->
+    <script>
+        (function() {
+            'use strict';
+            const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            function getTypingDelay(char) {
+                let base = 45 + Math.random() * 90;
+                if (/[a-z]/i.test(char)) base = 30 + Math.random() * 60;
+                if (/[<>&{}()\[\];:=,.+\-]/.test(char)) base = 70 + Math.random() * 140;
+                if (/[>;{}):]/.test(char)) base += 160 + Math.random() * 320;
+                if (Math.random() < 0.12) base = 16 + Math.random() * 30;
+                return Math.max(14, Math.round(base));
+            }
+
+            function typeLine(plain, html, indent, parentUl, cursor) {
+                return new Promise(resolve => {
+                    const li = document.createElement('li');
+                    li.className = 'code-line';
+                    if (indent === 1) li.classList.add('indent-1');
+                    if (indent === 2) li.classList.add('indent-2');
+                    li.textContent = '';
+                    parentUl.appendChild(li);
+                    li.appendChild(cursor);
+                    cursor.classList.remove('hidden');
+                    const chars = [...plain];
+                    let idx = 0;
+                    function next() {
+                        if (idx >= chars.length) {
+                            cursor.remove();
+                            li.innerHTML = html;
+                            li.appendChild(cursor);
+                            setTimeout(() => { cursor.remove(); resolve(); }, 280 + Math.random() * 420);
+                            return;
+                        }
+                        li.textContent = chars.slice(0, idx + 1).join('');
+                        li.appendChild(cursor);
+                        idx++;
+                        setTimeout(next, getTypingDelay(chars[idx - 1] || ' '));
+                    }
+                    setTimeout(next, 60 + Math.random() * 160);
+                });
+            }
+
+            async function typeCard(cardId, lines) {
+                const card = document.getElementById(cardId);
+                if (!card) return;
+                const body = card.querySelector('.code-card__body');
+                if (!body) return;
+                body.innerHTML = '';
+                const ul = document.createElement('ul');
+                ul.className = 'code-lines';
+                body.appendChild(ul);
+                const cursor = document.createElement('span');
+                cursor.className = 'typing-cursor';
+                cursor.setAttribute('aria-hidden', 'true');
+                for (const line of lines) await typeLine(line.plain, line.html, line.indent, ul, cursor);
+                cursor.classList.add('hidden');
+                if (cursor.parentNode) cursor.remove();
+                body.querySelectorAll('.typing-cursor').forEach(c => c.remove());
+            }
+
+            function readLineData(cardId) {
+                const card = document.getElementById(cardId);
+                if (!card) return [];
+                return Array.from(card.querySelectorAll('.code-line-source')).map(el => ({
+                    plain: el.dataset.plain || '',
+                    html: el.innerHTML || '',
+                    indent: parseInt(el.dataset.indent, 10) || 0,
+                }));
+            }
+
+            function readAllLineData() {
+                const ids = ['card-py', 'card-dj', 'card-react'];
+                const map = {};
+                ids.forEach(id => map[id] = readLineData(id));
+                return map;
+            }
+
+            function resetAllCards() {
+                ['card-py', 'card-dj', 'card-react'].forEach(id => {
+                    const card = document.getElementById(id);
+                    if (!card) return;
+                    card.classList.remove('visible');
+                    const body = card.querySelector('.code-card__body');
+                    if (body) body.innerHTML = '';
+                });
+            }
+
+            async function runTypingCycle(cached) {
+                for (const id of ['card-py', 'card-dj', 'card-react']) {
+                    const lines = cached[id] || [];
+                    if (!lines.length) continue;
+                    const card = document.getElementById(id);
+                    card.classList.add('visible');
+                    await new Promise(r => setTimeout(r, 400 + Math.random() * 200));
+                    await typeCard(id, lines);
+                    await new Promise(r => setTimeout(r, 300 + Math.random() * 250));
+                }
+            }
+
+            async function startInfiniteLoop(cached) {
+                await new Promise(r => setTimeout(r, 500));
+                while (true) {
+                    await runTypingCycle(cached);
+                    await new Promise(r => setTimeout(r, 2000 + Math.random() * 1000));
+                    resetAllCards();
+                    await new Promise(r => setTimeout(r, 500 + Math.random() * 400));
+                }
+            }
+
+            function revealAllInstantly() {
+                ['card-py', 'card-dj', 'card-react'].forEach(id => {
+                    const card = document.getElementById(id);
+                    if (!card) return;
+                    card.classList.add('visible');
+                    card.querySelectorAll('.typing-cursor').forEach(c => c.remove());
+                });
+            }
+
+            function init() {
+                if (prefersReducedMotion()) { revealAllInstantly(); return; }
+                const cached = readAllLineData();
+                resetAllCards();
+                startInfiniteLoop(cached).catch(err => {
+                    console.warn('Loop stopped, showing static.', err);
+                    revealAllInstantly();
+                });
+            }
+
+            const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+            mq.addEventListener('change', e => {
+                if (e.matches) revealAllInstantly();
+                else window.location.reload();
+            });
+
+            if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+            else init();
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Waves — Modern Light</title>
+
+<!-- Inter (system fallback if blocked) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════════════════════
+   1 · DESIGN TOKENS
+   ═══════════════════════════════════════════════════════════════════════ */
+:root {
+  --dr-ink-900: #0b1220;
+  --dr-ink-800: #172133;
+  --dr-ink-700: #2b3850;
+  --dr-ink-600: #43516b;
+  --dr-ink-500: #5b6b82;
+  --dr-ink-400: #8b9aae;
+  --dr-ink-300: #c3cdd9;
+  --dr-ink-100: #e3e9f0;
+
+  --dr-calm: #0891b2;
+  --dr-mid:  #7c3aed;
+  --dr-hot:  #db2777;
+  --dr-core: #0b1220;
+
+  --dr-surface-0: #ffffff;
+  --dr-surface-1: #f4f7fa;
+  --dr-surface-2: #e2e9f1;
+  --dr-surface-3: #d6dfe9;
+
+  --dr-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                  "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --dr-text-xs:      clamp(0.6875rem, 0.66rem + 0.15vw, 0.75rem);
+  --dr-text-sm:      clamp(0.8125rem, 0.79rem + 0.15vw, 0.875rem);
+  --dr-text-base:    clamp(0.9375rem, 0.90rem + 0.20vw, 1rem);
+  --dr-text-lg:      clamp(1.0625rem, 1.00rem + 0.35vw, 1.1875rem);
+  --dr-text-xl:      clamp(1.25rem,   1.10rem + 0.85vw, 1.5rem);
+  --dr-text-display: clamp(2.75rem,   1.8rem + 4.6vw, 5.25rem);
+
+  --dr-space-1: 0.25rem;  --dr-space-2: 0.5rem;  --dr-space-3: 0.75rem;
+  --dr-space-4: 1rem;     --dr-space-5: 1.5rem;  --dr-space-6: 2rem;
+  --dr-space-7: 3rem;     --dr-space-8: 4rem;
+
+  --dr-radius-sm: 8px;  --dr-radius-md: 14px;  --dr-radius-lg: 22px;
+  --dr-radius-pill: 999px;
+
+  --dr-shadow-xs: 0 1px 2px rgba(11,18,32,.05);
+  --dr-shadow-sm: 0 2px 8px -2px rgba(11,18,32,.08);
+  --dr-shadow-md: 0 8px 24px -8px rgba(11,18,32,.14);
+
+  --dr-ease: cubic-bezier(.22, 1, .36, 1);
+  --dr-dur-fast: 180ms;
+  --dr-dur-med:  320ms;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   2 · BASE
+   ═══════════════════════════════════════════════════════════════════════ */
+:where(html, body) { height: 100%; margin: 0; }
+
+body {
+  font-family: var(--dr-font-sans);
+  font-size: var(--dr-text-base);
+  line-height: 1.6;
+  color: var(--dr-ink-700);
+  background: var(--dr-surface-1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01", "cv11";
+  overflow: hidden;
+}
+::selection { background: rgba(124,58,237,.20); color: var(--dr-ink-900); }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   3 · WAVES STAGE
+   z-stack inside container (isolated):
+      orb(0) · canvas(1) · white spotlight(2) · violet tint(3)
+   ═══════════════════════════════════════════════════════════════════════ */
+.waves-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  isolation: isolate;
+  z-index: 0;
+  --x: 50%;
+  --y: 50%;
+  --cursor-color: #ffffff;
+
+  background:
+    radial-gradient(120% 90% at 12% 6%,  rgba(8,145,178,.10),  transparent 55%),
+    radial-gradient(110% 85% at 90% 12%, rgba(124,58,237,.08), transparent 55%),
+    radial-gradient(130% 110% at 50% 108%, rgba(219,39,119,.07), transparent 62%),
+    linear-gradient(160deg,
+      var(--dr-surface-0)  0%,
+      #fbfdff              18%,
+      var(--dr-surface-1)  42%,
+      var(--dr-surface-2)  78%,
+      var(--dr-surface-3) 100%);
+}
+
+/* ── Ambient orbs ─────────────────────────────────────────────────── */
+.waves-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  z-index: 0;
+  will-change: transform;
+}
+.waves-orb--a {
+  width: 44vmax; height: 44vmax;
+  top: -16vmax; left: -12vmax;
+  background: radial-gradient(circle, rgba(124,58,237,.18), transparent 70%);
+  animation: waves-drift-a 28s ease-in-out infinite;
+}
+.waves-orb--b {
+  width: 50vmax; height: 50vmax;
+  bottom: -20vmax; right: -14vmax;
+  background: radial-gradient(circle, rgba(8,145,178,.15), transparent 70%);
+  animation: waves-drift-b 34s ease-in-out infinite;
+}
+@keyframes waves-drift-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(3vmax, 2vmax) scale(1.06); }
+}
+@keyframes waves-drift-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(-3vmax, -2vmax) scale(1.05); }
+}
+
+/* ── Canvas (the wave grid) ──────────────────────────────────────── */
+.waves-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* ── Cursor spotlight — screen blend brightens ink lines to white ── */
+.waves-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(
+    circle 300px at var(--x) var(--y),
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.55) 22%,
+    rgba(255, 255, 255, 0) 65%
+  );
+  mix-blend-mode: screen;
+}
+
+/* ── Violet ambience — subtle hue focus on the same cursor ──────── */
+.waves-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background: radial-gradient(
+    circle 440px at var(--x) var(--y),
+    rgba(124, 58, 237, 0.055) 0%,
+    rgba(124, 58, 237, 0) 70%
+  );
+  mix-blend-mode: multiply;
+}
+
+/* ── Fine grain to keep flat pearls from looking digital ─────────── */
+.waves-container .waves-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+  opacity: .04;
+  mix-blend-mode: multiply;
+  background-repeat: repeat;
+  background-size: 160px 160px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .waves-orb { animation: none !important; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   4 · NAV
+   ═══════════════════════════════════════════════════════════════════════ */
+.dr-nav {
+  position: fixed;
+  top: var(--dr-space-5);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: var(--dr-space-6);
+  padding: 0.55rem 0.55rem 0.55rem 1.15rem;
+  background: rgba(255,255,255,.62);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+          backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255,255,255,.85);
+  border-radius: var(--dr-radius-pill);
+  box-shadow: var(--dr-shadow-sm), inset 0 1px 0 rgba(255,255,255,.6);
+  max-width: calc(100vw - 2rem);
+}
+.dr-nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 700;
+  font-size: var(--dr-text-sm);
+  letter-spacing: -0.01em;
+  color: var(--dr-ink-900);
+  text-decoration: none;
+}
+.dr-nav__brand-mark {
+  display: inline-block;
+  width: 22px; height: 22px;
+  border-radius: 7px;
+  background: linear-gradient(135deg, var(--dr-calm), var(--dr-mid) 55%, var(--dr-hot));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.45);
+  position: relative;
+}
+.dr-nav__brand-mark::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 2px;
+  background: rgba(255,255,255,.9);
+}
+.dr-nav__links {
+  display: flex;
+  gap: var(--dr-space-1);
+  list-style: none;
+  margin: 0; padding: 0;
+}
+.dr-nav__links a {
+  display: inline-block;
+  padding: 0.45rem 0.8rem;
+  border-radius: var(--dr-radius-pill);
+  font-size: var(--dr-text-sm);
+  font-weight: 500;
+  color: var(--dr-ink-600);
+  text-decoration: none;
+  transition: background var(--dr-dur-fast) var(--dr-ease),
+              color      var(--dr-dur-fast) var(--dr-ease);
+}
+.dr-nav__links a:hover {
+  color: var(--dr-ink-900);
+  background: rgba(11,18,32,.05);
+}
+.dr-nav__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1rem;
+  border-radius: var(--dr-radius-pill);
+  font-size: var(--dr-text-sm);
+  font-weight: 600;
+  color: #fff;
+  background: var(--dr-ink-900);
+  text-decoration: none;
+  transition: background var(--dr-dur-fast) var(--dr-ease),
+              transform  var(--dr-dur-fast) var(--dr-ease);
+}
+.dr-nav__cta:hover {
+  color: #fff;
+  background: var(--dr-ink-800);
+  transform: translateY(-1px);
+}
+@media (max-width: 720px) {
+  .dr-nav__links { display: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   5 · HERO
+   ═══════════════════════════════════════════════════════════════════════ */
+.dr-hero {
+  position: relative;
+  z-index: 10;
+  height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: var(--dr-space-6);
+  pointer-events: none;
+}
+.dr-hero__inner {
+  width: 100%;
+  max-width: 880px;
+  text-align: center;
+  pointer-events: auto;
+}
+
+.dr-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.35rem 0.35rem 0.35rem 0.7rem;
+  margin-bottom: var(--dr-space-5);
+  background: rgba(255,255,255,.7);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border: 1px solid rgba(11,18,32,.08);
+  border-radius: var(--dr-radius-pill);
+  font-size: var(--dr-text-xs);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--dr-ink-600);
+  box-shadow: var(--dr-shadow-xs);
+}
+.dr-badge__dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 3px rgba(16,185,129,.18);
+  animation: dr-pulse 2.2s ease-in-out infinite;
+}
+.dr-badge__chip {
+  padding: 0.2rem 0.55rem;
+  background: var(--dr-ink-900);
+  color: #fff;
+  border-radius: var(--dr-radius-pill);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+@keyframes dr-pulse {
+  0%, 100% { opacity: 1;    }
+  50%      { opacity: 0.45; }
+}
+
+.dr-hero__title {
+  font-size: var(--dr-text-display);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  color: var(--dr-ink-900);
+  margin: 0 0 var(--dr-space-5);
+  text-wrap: balance;
+  font-feature-settings: "ss01", "cv11";
+}
+.dr-hero__title em {
+  font-style: normal;
+  background: linear-gradient(120deg,
+    #0b1220 0%,
+    #3b2f7a 42%,
+    #7c3aed 72%,
+    #db2777 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent;
+}
+
+.dr-hero__lead {
+  font-size: var(--dr-text-lg);
+  line-height: 1.55;
+  font-weight: 400;
+  color: var(--dr-ink-600);
+  max-width: 56ch;
+  margin: 0 auto var(--dr-space-7);
+  text-wrap: pretty;
+}
+
+.dr-hero__actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--dr-space-3);
+  justify-content: center;
+  margin-bottom: var(--dr-space-8);
+}
+
+.dr-btn {
+  --_bg: transparent;
+  --_fg: var(--dr-ink-900);
+  --_bd: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  border-radius: var(--dr-radius-pill);
+  font-size: var(--dr-text-sm);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  color: var(--_fg);
+  background: var(--_bg);
+  border: 1px solid var(--_bd);
+  transition:
+    transform var(--dr-dur-fast) var(--dr-ease),
+    box-shadow var(--dr-dur-fast) var(--dr-ease),
+    background-color var(--dr-dur-fast) var(--dr-ease),
+    border-color var(--dr-dur-fast) var(--dr-ease);
+  white-space: nowrap;
+}
+.dr-btn svg { width: 16px; height: 16px; flex: none; }
+.dr-btn--primary {
+  --_bg: var(--dr-ink-900);
+  --_fg: #ffffff;
+  --_bd: var(--dr-ink-900);
+  box-shadow: 0 1px 2px rgba(11,18,32,.10),
+              0 6px 20px -6px rgba(11,18,32,.28);
+}
+.dr-btn--primary:hover {
+  --_bg: var(--dr-ink-800);
+  --_bd: var(--dr-ink-800);
+  transform: translateY(-1px);
+  box-shadow: 0 1px 2px rgba(11,18,32,.10),
+              0 12px 28px -6px rgba(11,18,32,.34);
+}
+.dr-btn--ghost {
+  --_bg: rgba(255,255,255,.7);
+  --_fg: var(--dr-ink-900);
+  --_bd: rgba(11,18,32,.12);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  box-shadow: var(--dr-shadow-xs);
+}
+.dr-btn--ghost:hover {
+  --_bg: rgba(255,255,255,.95);
+  --_bd: rgba(11,18,32,.22);
+  transform: translateY(-1px);
+}
+
+.dr-hero__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--dr-space-3);
+  max-width: 640px;
+  margin: 0 auto;
+}
+.dr-stat {
+  position: relative;
+  padding: var(--dr-space-4);
+  text-align: left;
+  background: rgba(255,255,255,.55);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+          backdrop-filter: blur(14px) saturate(180%);
+  border: 1px solid rgba(255,255,255,.75);
+  border-radius: var(--dr-radius-md);
+  box-shadow: var(--dr-shadow-xs), inset 0 1px 0 rgba(255,255,255,.8);
+  transition: transform var(--dr-dur-med) var(--dr-ease),
+              box-shadow var(--dr-dur-med) var(--dr-ease);
+}
+.dr-stat:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--dr-shadow-md), inset 0 1px 0 rgba(255,255,255,.8);
+}
+.dr-stat__dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--dot, var(--dr-mid));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot, var(--dr-mid)) 18%, transparent);
+  margin-bottom: 0.5rem;
+}
+.dr-stat__value {
+  font-size: var(--dr-text-xl);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--dr-ink-900);
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+.dr-stat__label {
+  font-size: var(--dr-text-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dr-ink-500);
+}
+@media (max-width: 560px) {
+  .dr-hero__stats { grid-template-columns: 1fr; max-width: 320px; }
+  .dr-hero__actions .dr-btn { flex: 1 1 100%; justify-content: center; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   6 · ENTRANCE
+   ═══════════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: no-preference) {
+  .dr-hero__inner > * {
+    opacity: 0;
+    animation: dr-fade-in .9s var(--dr-ease) forwards;
+  }
+  .dr-hero__inner > *:nth-child(1) { animation-delay: .05s; }
+  .dr-hero__inner > *:nth-child(2) { animation-delay: .15s; }
+  .dr-hero__inner > *:nth-child(3) { animation-delay: .28s; }
+  .dr-hero__inner > *:nth-child(4) { animation-delay: .40s; }
+  .dr-hero__inner > *:nth-child(5) { animation-delay: .52s; }
+  .dr-nav {
+    opacity: 0;
+    animation: dr-fade-in .8s var(--dr-ease) .1s forwards;
+  }
+}
+@keyframes dr-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     WAVES STAGE
+       data-line-color   any CSS colour string   (default #0b1220)
+     ════════════════════════════════════════════════════════════════════ -->
+<div class="waves-container" aria-hidden="true" data-line-color="#0b1220">
+  <div class="waves-orb waves-orb--a"></div>
+  <div class="waves-orb waves-orb--b"></div>
+  <canvas class="waves-canvas"></canvas>
+  <div class="waves-grain"></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     NAV
+     ════════════════════════════════════════════════════════════════════ -->
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════════════════════════════════ -->
+<main class="dr-hero">
+  <div class="dr-hero__inner">
+
+    <div class="dr-badge">
+      <span class="dr-badge__dot" aria-hidden="true"></span>
+      Interactive field
+      <span class="dr-badge__chip">v2.6</span>
+    </div>
+
+    <h1 class="dr-hero__title">
+      Real-time signals,<br>
+      <em>beautifully rendered.</em>
+    </h1>
+
+    <p class="dr-hero__lead">
+      Move your cursor across the field. Waves ripple and flow in
+      response — every line tuned against a pearlescent white gradient
+      for calm, legible motion.
+    </p>
+
+ 
+
+   
+  </div>
+</main>
+
+<!-- jQuery + Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   WAVES — Perlin-noise grid engine
+   ──────────────────────────────────────────────────────────────────────
+   Direct port of the original React component. Every algorithm is
+   byte-identical:
+
+     • Noise class (Perlin2 with seed)      — unchanged
+     • animationConfig                       — unchanged
+     • setLines / movePoints / drawLines     — unchanged
+     • Mouse smoothing, velocity, angle      — unchanged
+     • Tension / friction / displacement     — unchanged
+
+   Two light-theme deltas:
+     1. lineColor default  #000000 → #0b1220  (ink-900, palette-cohesive)
+     2. Cursor spotlight  uses  mix-blend-mode: screen  on a  pearl-white
+        gradient — the original relied on  screen  on a dark stage.
+   ═══════════════════════════════════════════════════════════════════════ */
+(function ($) {
+  "use strict";
+
+  /* ─────────────────────────── Noise ─────────────────────────── */
+  class Noise {
+    constructor(seed) {
+      this.p = new Uint8Array(512);
+      this.seed = seed > 0 && seed < 1 ? seed : Math.random();
+      this.grad3 = [
+        [1, 1, 0], [-1, 1, 0], [1, -1, 0], [-1, -1, 0],
+        [1, 0, 1], [-1, 0, 1], [1, 0, -1], [-1, 0, -1],
+        [0, 1, 1], [0, -1, 1], [0, 1, -1], [0, -1, -1]
+      ];
+      this.init(this.seed);
+    }
+    init(seed) {
+      let i, j, k;
+      const p = new Uint8Array(256);
+      for (i = 0; i < 256; i++) p[i] = i;
+      for (i = 0; i < 256; i++) {
+        j = Math.floor(seed * (i + 1)) % 256;
+        k = p[i];
+        p[i] = p[j];
+        p[j] = k;
+      }
+      for (i = 0; i < 512; i++) this.p[i] = p[i & 255];
+    }
+    dot(g, x, y) { return g[0] * x + g[1] * y; }
+    perlin2(x, y) {
+      const X = Math.floor(x) & 255;
+      const Y = Math.floor(y) & 255;
+      x -= Math.floor(x);
+      y -= Math.floor(y);
+      const fade = (t) => t * t * t * (t * (t * 6 - 15) + 10);
+      const u = fade(x);
+      const v = fade(y);
+      const p = this.p;
+      const grad3 = this.grad3;
+      const n00 = this.dot(grad3[p[X + p[Y]] % 12], x, y);
+      const n01 = this.dot(grad3[p[X + p[Y + 1]] % 12], x, y - 1);
+      const n10 = this.dot(grad3[p[X + 1 + p[Y]] % 12], x - 1, y);
+      const n11 = this.dot(grad3[p[X + 1 + p[Y + 1]] % 12], x - 1, y - 1);
+      const lerp = (a, b, x) => a + x * (b - a);
+      return lerp(lerp(n00, n10, u), lerp(n01, n11, u), v);
+    }
+  }
+
+  /* ─────────────────────────── Config ─────────────────────────── */
+  const animationConfig = {
+    GRID_X_GAP: 10,
+    GRID_Y_GAP: 32,
+    GRID_WIDTH_OFFSET: 200,
+    GRID_HEIGHT_OFFSET: 30,
+
+    WAVE_TIME_X_FACTOR: 0.0125,
+    WAVE_NOISE_X_FACTOR: 0.002,
+    WAVE_TIME_Y_FACTOR: 0.005,
+    WAVE_NOISE_Y_FACTOR: 0.0015,
+    WAVE_NOISE_MAGNITUDE: 12,
+    WAVE_AMPLITUDE_X: 32,
+    WAVE_AMPLITUDE_Y: 16,
+
+    MOUSE_INFLUENCE_RADIUS: 175,
+    MOUSE_FALLOFF_FACTOR: 0.001,
+    MOUSE_FORCE_FACTOR: 0.00065,
+    MOUSE_SMOOTHING_FACTOR: 0.1,
+    MAX_MOUSE_VELOCITY: 100,
+
+    TENSION_STRENGTH: 0.005,
+    FRICTION: 0.925,
+    CURSOR_DISPLACEMENT_STRENGTH: 2,
+    MAX_CURSOR_DISPLACEMENT: 100,
+  };
+
+  /* ─────────────────────────── Engine ─────────────────────────── */
+  function initWaves(container) {
+    const canvas = container.querySelector(".waves-canvas");
+    if (!canvas) return null;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return null;
+
+    const state = {
+      ctx,
+      mouse: { x: -10, y: 0, lx: 0, ly: 0, sx: 0, sy: 0, v: 0, vs: 0, a: 0, set: false },
+      lines: [],
+      noise: new Noise(Math.random()),
+      bounding: null,
+      animationFrameId: null,
+      lineColor: container.dataset.lineColor || "#0b1220",
+      dpr: 1,
+    };
+
+    const moved = (point, withCursorForce = true) => {
+      const coords = {
+        x: point.x + point.wave.x + (withCursorForce ? point.cursor.x : 0),
+        y: point.y + point.wave.y + (withCursorForce ? point.cursor.y : 0)
+      };
+      coords.x = Math.round(coords.x * 10) / 10;
+      coords.y = Math.round(coords.y * 10) / 10;
+      return coords;
+    };
+
+    function setSize() {
+      state.bounding = container.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      state.dpr = dpr;
+      canvas.width  = Math.round(state.bounding.width  * dpr);
+      canvas.height = Math.round(state.bounding.height * dpr);
+
+      // Place the spotlight in the centre before the first pointer event
+      if (!state.mouse.set) {
+        state.mouse.x  = state.bounding.width  / 2;
+        state.mouse.y  = state.bounding.height / 2;
+        state.mouse.sx = state.mouse.x;
+        state.mouse.sy = state.mouse.y;
+        state.mouse.lx = state.mouse.x;
+        state.mouse.ly = state.mouse.y;
+      }
+    }
+
+    function setLines() {
+      if (!state.bounding) return;
+      const { width, height } = state.bounding;
+      state.lines = [];
+      const { GRID_X_GAP, GRID_Y_GAP, GRID_WIDTH_OFFSET, GRID_HEIGHT_OFFSET } = animationConfig;
+
+      const oWidth  = width  + GRID_WIDTH_OFFSET;
+      const oHeight = height + GRID_HEIGHT_OFFSET;
+
+      const totalLines  = Math.ceil(oWidth  / GRID_X_GAP);
+      const totalPoints = Math.ceil(oHeight / GRID_Y_GAP);
+
+      const xStart = (width  - GRID_X_GAP * totalLines)  / 2;
+      const yStart = (height - GRID_Y_GAP * totalPoints) / 2;
+
+      for (let i = 0; i <= totalLines; i++) {
+        const points = [];
+        for (let j = 0; j <= totalPoints; j++) {
+          points.push({
+            x: xStart + GRID_X_GAP * i,
+            y: yStart + GRID_Y_GAP * j,
+            wave: { x: 0, y: 0 },
+            cursor: { x: 0, y: 0, vx: 0, vy: 0 }
+          });
+        }
+        state.lines.push(points);
+      }
+    }
+
+    function movePoints(time) {
+      const { lines, mouse, noise } = state;
+      const {
+        WAVE_TIME_X_FACTOR, WAVE_NOISE_X_FACTOR, WAVE_TIME_Y_FACTOR, WAVE_NOISE_Y_FACTOR,
+        WAVE_NOISE_MAGNITUDE, WAVE_AMPLITUDE_X, WAVE_AMPLITUDE_Y, MOUSE_INFLUENCE_RADIUS,
+        MOUSE_FALLOFF_FACTOR, MOUSE_FORCE_FACTOR, TENSION_STRENGTH, FRICTION,
+        CURSOR_DISPLACEMENT_STRENGTH, MAX_CURSOR_DISPLACEMENT
+      } = animationConfig;
+
+      for (let i = 0; i < lines.length; i++) {
+        const points = lines[i];
+        for (let k = 0; k < points.length; k++) {
+          const p = points[k];
+
+          /* 1. Perlin-noise sway */
+          const noiseInputX = (p.x + time * WAVE_TIME_X_FACTOR) * WAVE_NOISE_X_FACTOR;
+          const noiseInputY = (p.y + time * WAVE_TIME_Y_FACTOR) * WAVE_NOISE_Y_FACTOR;
+          const move = noise.perlin2(noiseInputX, noiseInputY) * WAVE_NOISE_MAGNITUDE;
+          p.wave.x = Math.cos(move) * WAVE_AMPLITUDE_X;
+          p.wave.y = Math.sin(move) * WAVE_AMPLITUDE_Y;
+
+          /* 2. Mouse force */
+          const dx = p.x - mouse.sx;
+          const dy = p.y - mouse.sy;
+          const d  = Math.hypot(dx, dy);
+          const influenceRadius = Math.max(MOUSE_INFLUENCE_RADIUS, mouse.vs);
+
+          if (d < influenceRadius) {
+            const falloff = 1 - d / influenceRadius;
+            const force = Math.cos(d * MOUSE_FALLOFF_FACTOR) * falloff;
+            const forceFactor = force * influenceRadius * mouse.vs * MOUSE_FORCE_FACTOR;
+            p.cursor.vx += Math.cos(mouse.a) * forceFactor;
+            p.cursor.vy += Math.sin(mouse.a) * forceFactor;
+          }
+
+          /* 3. Spring + friction */
+          p.cursor.vx += (0 - p.cursor.x) * TENSION_STRENGTH;
+          p.cursor.vy += (0 - p.cursor.y) * TENSION_STRENGTH;
+          p.cursor.vx *= FRICTION;
+          p.cursor.vy *= FRICTION;
+          p.cursor.x += p.cursor.vx * CURSOR_DISPLACEMENT_STRENGTH;
+          p.cursor.y += p.cursor.vy * CURSOR_DISPLACEMENT_STRENGTH;
+          p.cursor.x = Math.min(MAX_CURSOR_DISPLACEMENT, Math.max(-MAX_CURSOR_DISPLACEMENT, p.cursor.x));
+          p.cursor.y = Math.min(MAX_CURSOR_DISPLACEMENT, Math.max(-MAX_CURSOR_DISPLACEMENT, p.cursor.y));
+        }
+      }
+    }
+
+    function drawLines() {
+      const { ctx, bounding, lines, dpr } = state;
+      if (!bounding) return;
+
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, bounding.width, bounding.height);
+      ctx.beginPath();
+      ctx.strokeStyle = state.lineColor;
+      ctx.lineWidth = 0.5;
+
+      for (let i = 0; i < lines.length; i++) {
+        const points = lines[i];
+        const first = moved(points[0], false);
+        ctx.moveTo(first.x, first.y);
+        for (let k = 0; k < points.length - 1; k++) {
+          const currentPoint = moved(points[k], true);
+          const nextPoint    = moved(points[k + 1], true);
+          const xc = (currentPoint.x + nextPoint.x) / 2;
+          const yc = (currentPoint.y + nextPoint.y) / 2;
+          ctx.quadraticCurveTo(currentPoint.x, currentPoint.y, xc, yc);
+        }
+      }
+      ctx.stroke();
+    }
+
+    function tick(time) {
+      const { mouse } = state;
+      const { MOUSE_SMOOTHING_FACTOR, MAX_MOUSE_VELOCITY } = animationConfig;
+
+      mouse.sx += (mouse.x - mouse.sx) * MOUSE_SMOOTHING_FACTOR;
+      mouse.sy += (mouse.y - mouse.sy) * MOUSE_SMOOTHING_FACTOR;
+
+      const dx = mouse.sx - mouse.lx;
+      const dy = mouse.sy - mouse.ly;
+      const d  = Math.hypot(dx, dy);
+
+      mouse.v = d;
+      mouse.vs += (d - mouse.vs) * MOUSE_SMOOTHING_FACTOR;
+      mouse.vs = Math.min(MAX_MOUSE_VELOCITY, mouse.vs);
+      mouse.a = Math.atan2(dy, dx);
+
+      mouse.lx = mouse.sx;
+      mouse.ly = mouse.sy;
+
+      container.style.setProperty("--x", mouse.sx + "px");
+      container.style.setProperty("--y", mouse.sy + "px");
+
+      movePoints(time);
+      drawLines();
+
+      state.animationFrameId = requestAnimationFrame(tick);
+    }
+
+    function updateMousePosition(x, y) {
+      if (!state.bounding) return;
+      const { mouse } = state;
+      mouse.x = x - state.bounding.left;
+      mouse.y = y - state.bounding.top;
+      if (!mouse.set) {
+        mouse.sx = mouse.x;
+        mouse.sy = mouse.y;
+        mouse.lx = mouse.x;
+        mouse.ly = mouse.y;
+        mouse.set = true;
+      }
+    }
+
+    function onResize()    { setSize(); setLines(); }
+    function onMouseMove(e) { updateMousePosition(e.pageX, e.pageY); }
+    function onTouchMove(e) {
+      e.preventDefault();
+      updateMousePosition(e.touches[0].clientX, e.touches[0].clientY);
+    }
+
+    setSize();
+    setLines();
+
+    window.addEventListener("resize", onResize);
+    window.addEventListener("mousemove", onMouseMove);
+    container.addEventListener("touchmove", onTouchMove, { passive: false });
+
+    state.animationFrameId = requestAnimationFrame(tick);
+
+    return {
+      destroy() {
+        window.removeEventListener("resize", onResize);
+        window.removeEventListener("mousemove", onMouseMove);
+        container.removeEventListener("touchmove", onTouchMove);
+        cancelAnimationFrame(state.animationFrameId);
+      }
+    };
+  }
+
+  /* ─────────────────────────── Boot ─────────────────────────── */
+  $(function () {
+    $(".waves-container").each(function () {
+      const api = initWaves(this);
+      if (api) $.data(this, "waves", api);
+    });
+  });
+
+  window.Waves = {
+    destroy: function (sel) {
+      $(sel || ".waves-container").each(function () {
+        const api = $.data(this, "waves");
+        if (api) api.destroy();
+      });
+    }
+  };
+})(jQuery);
+</script>
+</body>
+</html>
